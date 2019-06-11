@@ -11,15 +11,21 @@ h1, h2, h3, h4 {
   font-family: 'Londrina Solid', serif;
 }
 
+ul {
+  padding-left: 0;
+}
+
 nav ul li {
   list-style-type: none;
   margin: 0 10px;
   padding: 6px 5px;
+  padding-left: 0;
 }
 
-nav a:hover {
-  color: #0e455a;
+a:hover {
+  color: #4aa0c2;
   text-decoration: none;
+  text-shadow: #2e5e72 0px 0px 5px;
 }
 
 
@@ -32,13 +38,34 @@ header * {
   color: #eee;
 }
 
+/*** ASIDE ***/
+#to-watch-list,
+#recently-rated {
+  border: #2e5e72 double 6px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+}
+
 
 /*** FOOTER ***/
 footer {
   background-color: #333;
+  border-top: #2e5e72 dashed 20px;
   padding: 20px 0;
 }
 
 footer * {
   color: #fff;
+}
+
+footer p {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+footer p a {
+  font-weight: 800;
+  margin: 0 10px;
 }

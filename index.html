@@ -18,18 +18,21 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-between">
                 <h1 id="logo">Movie Mediator</h1>
-                <nav>
-                    <ul class="d-flex">
-                        <li><a href="#">Recently Rated</a></li>
-                        <li><a href="#">Watch List</a></li>
-                        <li><a href="#">User Profile</a></li>
-                    </ul>
-                </nav>
+                <div class="text-right">
+                    <a href="#">Log In | Sign Up</a>
+                    <nav>
+                        <ul class="d-flex">
+                            <li><a href="#">Recently Rated</a></li>
+                            <li><a href="#">Watch List</a></li>
+                            <li><a href="#">User Profile</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="container my-5 mb-auto d-flex flex-wrap justify-content-between">
+    <div class="my-5 mb-auto d-flex flex-wrap justify-content-between">
         <div class="row w-100">
             <main class="col-sm-12 col-md-8">
                 Main Text
@@ -40,13 +43,14 @@
                 <div id="to-watch-list">
                     <h2>Watch List</h2>
                     <div class="to-watch-movie">
-                        <ul>
-                            <li></li>
-                        </ul>
                         <h4 v-for="movie in movies">{{ movie.Title }}</h4>
                         <p v-for="movie in movies">{{ movie.Year }}</p>
                     </div>
                     <p>{{ main }}</p>
+                </div>
+
+                <div id="recently-rated">
+                    <h2>Recently Rated</h2>
                 </div>
 
             </aside>
@@ -55,11 +59,22 @@
 
     <footer>
         <nav>
-            <ul class="d-flex justify-content-center">
+            <ul class="pb-4 d-flex justify-content-center">
                 <li><a href="">About</a></li>
                 <li><a href="">Repo</a></li>
                 <li><a href="">Contact</a></li>
             </ul>
+
+            <p>
+                &copy; Movie Mediator
+            </p>
+            <p>
+                Made by 
+                <a href="#" target="_blank" rel="noopener noreferrer">Kevin Bevil</a> 
+                <a href="#" target="_blank" rel="noopener noreferrer">Justin Chastain</a> 
+                <a href="#" target="_blank" rel="noopener noreferrer">Joe Keegan</a> 
+                <a href="#" target="_blank" rel="noopener noreferrer">Donna Kuang</a>
+            </p>
         </nav>
     </footer>
 
