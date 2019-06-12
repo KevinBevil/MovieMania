@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Mania</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Yantramanav:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body class="d-flex flex-column justify-content-between">
+    <header class="p-4">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <a href="#" id="logo">Movie Mania</a>
+                <div class="text-right">
+                    <a href="#" id="log-in">Log In | Sign Up</a>
+                    <nav>
+                        <ul class="d-flex">
+                            <li><a href="#">Recently Rated</a></li>
+                            <li><a href="#">Watch List</a></li>
+                            <li><a href="#">User Profile</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="m-4 mb-auto d-flex flex-wrap justify-content-between">
+        <!-- <div class="row w-100"> -->
+        <main>
+            <div class="section-border" id="search-a-movie">
+                <h3>Search a Movie</h3>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="text" id="input-search">
+                    </div>
+                    <button type="submit" class="btn mb-2" id="btn-search-movie"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div id="search-result">
+
+            <!-- 
+                <div class="row">
+                    <div class="section-border" id="movie-details">
+                            <div class="col-sm-3 movie-details-side">
+                                <img class="mb-3 movie-poster" src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg" alt="">
+                                <div>
+                                    <p><strong>Runtime:</strong> 181 min</p>
+                                    <p><strong>Genre:</strong> Action, Adventure, Fantasy, Sci-Fi</p>
+                                    <p><strong>Ratings:</strong> 8.9/10</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row px-3 movie-details-main">
+                                    <div class="d-flex flex-wrap movie-details-header">
+                                        <h2 class="mr-2" id="movie-title">Avengers: Endgame</h2>
+                                        <p class="mr-2" id="movie-year">2019</p>
+                                    </div>
+                                    <div class="movie-details-body">
+                                        <p id="movie-director">Directed by Anthony Russo, Joe Russo</p>
+                                        <p class="movie-plot">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to undo Thanos' actions and restore order to the universe.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+            -->
+
+            </div>
+        </main>
+
+
+        <aside>
+            <div class="section-border" id="to-watch-list">
+                <h3>Watch List</h3>
+                <div id="watch-list-wrapper">
+                    <div class="watch-list-movie d-flex">
+                        <h5>Aladdin</h5>
+                        <div class="watch-action ml-3">
+                            <i class="far fa-check-square ml-2"></i>
+                            <i class="far fa-trash-alt ml-2"></i>
+                        </div>
+                    </div>
+
+                    <h5>Beauty and the Beast</h5>
+                    <h5>The Lion King</h5>
+                </div>
+            </div>
+
+            <div class="section-border" id="recently-rated">
+                <h3>Recently Rated</h3>
+                <!-- <todo-component></todo-component> -->
+                <p>{{ main }}</p>
+                <div class="to-watch-movie">
+                    <h5 v-for="movie in movies">{{ movie.Title }}</h5>
+                    <p v-for="movie in movies">{{ movie.Year }}</p>
+                </div>
+                <div vue="watch-list"></div>
+            </div>
+
+        </aside>
+    </div>
+
+
+    <footer>
+        <nav>
+            <ul class=" d-flex justify-content-center">
+                <!-- <li><a href="#">About</a></li> -->
+                <li><a href="https://github.com/KevinBevil/Project2" target="_blank"><i class="fab fa-github fa-3x"></i></a></li>
+                <!-- <li><a href="#">Contact</a></li> -->
+            </ul>
+
+            <p>
+                &copy; Movie Mania, made by:
+            </p>
+            <div class="dev-wrapper text-center">
+                <a class="developer" href="https://github.com/kevinbevil" target="_blank" rel="noopener noreferrer">Kevin Bevil</a>
+                <a class="developer" href="https://github.com/aangl3r" target="_blank" rel="noopener noreferrer">Justin
+                    Chastain</a>
+                <a class="developer" href="https://github.com/jwkeegan" target="_blank" rel="noopener noreferrer">Joe
+                    Keegan</a>
+                <a class="developer" href="https://github.com/dolaku" target="_blank" rel="noopener noreferrer">Donna
+                    Kuang</a>
+            </div>
+        </nav>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script src="./js/index.js"></script>
+    <script src="./js/omdb.js"></script>
+    <script src="./js/vue.js"></script>
+
+
+
+</body>
+
+</html>
