@@ -7,11 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movie Mania</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Yantramanav:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="public/styles/styles.css">
 </head>
 
@@ -21,7 +19,7 @@
             <div class="col-12 d-flex justify-content-between align-items-center">
                 <a href="#" id="logo">Movie Mania</a>
                 <div class="text-right">
-                    <a href="#">Log In | Sign Up</a>
+                    <a href="#" id="log-in">Log In | Sign Up</a>
                     <nav>
                         <ul class="d-flex">
                             <li><a href="#">Recently Rated</a></li>
@@ -43,24 +41,38 @@
                     <div class="form-group mb-2">
                         <input type="text" id="input-search">
                     </div>
-                    <button type="submit" class="btn mb-2"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="btn mb-2" id="btn-search-movie"><i class="fas fa-search"></i></button>
                 </form>
             </div>
 
-            <div class="section-border d-flex" id="movie-details">
-                <div class="mr-3">
-                    <img class="mb-3 movie-poster" src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg" alt="">
-                    <div>
-                        <p>Playtime: </p>
-                        <p>Genre: </p>
-                        <p>Ratings: </p>
+            <div id="search-result">
+
+            <!-- <div class="row">
+                <div class="section-border" id="movie-details">
+                        <div class="col-sm-3 movie-details-side">
+                            <img class="mb-3 movie-poster" src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg" alt="">
+                            <div>
+                                <p><strong>Runtime:</strong> 181 min</p>
+                                <p><strong>Genre:</strong> Action, Adventure, Fantasy, Sci-Fi</p>
+                                <p><strong>Ratings:</strong> 8.9/10</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row px-3 movie-details-main">
+                                <div class="d-flex flex-wrap movie-details-header">
+                                    <h2 class="mr-2" id="movie-title">Avengers: Endgame</h2>
+                                    <p class="mr-2" id="movie-year">2019</p>
+                                </div>
+                                <div class="movie-details-body">
+                                    <p id="movie-director">Directed by Anthony Russo, Joe Russo</p>
+                                    <p class="movie-plot">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to undo Thanos' actions and restore order to the universe.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-wrap">
-                    <h2>Title</h2>
-                    <p>Year</p>
-                    <p>Directed by ~~~~~</p>
-                </div>
+                </div> 
+            -->
+
             </div>
         </main>
 
@@ -68,19 +80,34 @@
         <aside>
             <div class="section-border" id="to-watch-list">
                 <h3>Watch List</h3>
-                <div class="to-watch-movie">
-                    <h5 v-for="movie in movies">{{ movie.Title }}</h5>
-                    <p v-for="movie in movies">{{ movie.Year }}</p>
+                <div id="watch-list-wrapper">
+                    <div class="watch-list-movie d-flex">
+                        <h5>Aladdin</h5>
+                        <div class="watch-action ml-3">
+                            <i class="far fa-check-square ml-2"></i>
+                            <i class="far fa-trash-alt ml-2"></i>
+                        </div>
+                    </div>
+
+                    <h5>Beauty and the Beast</h5>
+                    <h5>The Lion King</h5>
                 </div>
-                <p>{{ main }}</p>
             </div>
 
             <div class="section-border" id="recently-rated">
                 <h3>Recently Rated</h3>
+                <!-- <todo-component></todo-component> -->
+                <p>{{ main }}</p>
+                <div class="to-watch-movie">
+                    <h5 v-for="movie in movies">{{ movie.Title }}</h5>
+                    <p v-for="movie in movies">{{ movie.Year }}</p>
+                </div>
+                <!-- <movieList></movieList> -->
             </div>
 
         </aside>
     </div>
+
 
     <footer>
         <nav>
@@ -94,8 +121,7 @@
                 &copy; Movie Mania, made by:
             </p>
             <div class="dev-wrapper text-center">
-                <a class="developer" href="https://github.com/kevinbevil" target="_blank"
-                    rel="noopener noreferrer">Kevin Bevil</a>
+                <a class="developer" href="https://github.com/kevinbevil" target="_blank" rel="noopener noreferrer">Kevin Bevil</a>
                 <a class="developer" href="https://github.com/aangl3r" target="_blank" rel="noopener noreferrer">Justin
                     Chastain</a>
                 <a class="developer" href="https://github.com/jwkeegan" target="_blank" rel="noopener noreferrer">Joe
@@ -107,19 +133,88 @@
     </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+    <script type="text/javascript">
+
+        // Ajax call to OMDB
+
+        $("#btn-search-movie").on("click", function (event) {
+            event.preventDefault();
+            $("#search-result").text("");
+
+            // grab text from input && remove trailing spaces
+            var movie = $("#input-search").val().trim();
+
+            // URL
+            var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+
+
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (res) {
+                $("#input-search").val("");
+                console.log(res);
+
+                if (res.Response !== "False") {
+                    $("#search-result").append(`
+                        <div class="section-border" id="movie-details">
+                            <div class="row">
+                                <div class="col-sm-3 movie-details-side">
+                                    <img class="mb-3 movie-poster" src="${res.Poster}" alt="">
+                                    <div>
+                                        <p><strong>Runtime:</strong> ${res.Runtime}</p>
+                                        <p><strong>Genre:</strong> ${res.Genre}</p>
+                                        <p><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row px-3 movie-details-main">
+                                        <div class="d-flex flex-wrap movie-details-header">
+                                            <h2 class="mr-2" id="movie-title">
+                                                ${res.Title}
+                                                <span class="mr-2" id="movie-year">${res.Year}</span>
+                                            </h2>
+                                        </div>
+                                        <div class="movie-details-body">
+                                            <p id="movie-director">Directed by ${res.Director}</p>
+                                            <p class="movie-plot">${res.Plot}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                } else {
+                    $("#search-result").append(`
+                        <div class="section-border text-center" id="movie-details">
+                            <h4>Sorry, movie not found!</h4>
+                            <i class="fas fa-film fa-5x"></i>
+                            <h4>Please try again.</h4>
+                        </div>
+                    `);
+                }
+            });
+
+        });
+    </script>
+
+
+
+
 
 
     <script>
         new Vue({
-            el: '#to-watch-list',
+            el: "#recently-rated",
             data: {
                 movies: [
                     {
@@ -204,10 +299,76 @@
                         "Response": "True"
                     }
                 ],
-                main: 'Here is my watch list'
+                main: "*** Testing Vue ***"
             }
         })
+
+        Vue.component("movieList", {
+            template: `
+                <div>
+                    <h1>I'm a component</h1>
+                    <h2>Here I am!!</h2>
+                </div>
+            `
+        });
+
+        // Vue.component("todo-component", {
+        //     template: `
+        //         <div>
+        //             <h3>Example vue todo component</h3>
+        //             <div v-for="item in items" class="form-group" :class="{'has-success': item.completed}">
+        //                 <div class="input-group">
+        //                     <div class="input-group-addon">
+        //                         <input type="checkbox" v-model="item.completed">
+        //                     </div>
+        //                     <input type="text" v-model="item.title" class="form-control">
+        //                 </div>
+        //             </div>
+        //             <div class="form-group">
+        //                 <div class="input-group">
+        //                     <input type="text" v-model="newItem" class="form-control">
+        //                     <div class="input-group-btn">
+        //                         <button class="btn" :class="{'btn-primary': newItem}" @click="addItem()">add!</button>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     `,
+        //     data: function () {
+        //         return {
+        //             items: [
+        //                 {
+        //                     id: 'item-1',
+        //                     title: 'Checkout vue',
+        //                     completed: false
+        //                 }, {
+        //                     id: 'item-2',
+        //                     title: 'Use this stuff!!',
+        //                     completed: false
+        //                 }
+        //             ],
+        //             newItem: ''
+
+        //         };
+        //     },
+        //     methods: {
+        //         addItem: function () {
+        //             if (this.newItem) {
+        //                 var item = {
+        //                     id: Math.random(0, 10000),
+        //                     title: this.newItem,
+        //                     completed: false
+        //                 };
+
+        //                 this.items.push(item);
+        //                 this.newItem = '';
+        //             }
+        //         }
+        //     }
+        // });
+
     </script>
+
 </body>
 
 </html>

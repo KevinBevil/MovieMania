@@ -1,7 +1,9 @@
 /*** GLOBAL ***/
 * {
   color: #444;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: -0.75px;
 }
 
 body {
@@ -10,6 +12,7 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Alfa Slab One', serif;
+  letter-spacing: unset;
 }
 
 ul {
@@ -84,7 +87,7 @@ main form #input-search {
 }
 
 .section-border {
-  border: #074d6b double 4px;
+  border: #074d6b44 double 4px;
   border-radius: 10px;
   box-shadow: inset 0px 0px 8px #2e5e72;
   margin-bottom: 20px;
@@ -92,14 +95,31 @@ main form #input-search {
 }
 
 aside .section-border {
-  border: #07686b double 4px;
+  border: #07686b44 double 4px;
   box-shadow: inset 0px 0px 8px #2e6272;
 }
 
-#movie-details .movie-poster {
-  width: 100px;
-  height: auto;
+.movie-details-side p {
+  line-height: 1.2;
+  margin: 0;
 }
+
+.movie-details-side .movie-poster {
+  max-width: 250px;
+  height: auto;
+  width: 100%;
+}
+
+.movie-details-header {
+  align-items: baseline;
+  width: -webkit-fill-available;
+}
+
+.movie-details-body p {
+  line-height: 1.2;
+}
+
+
 
 /*** FOOTER ***/
 footer {
