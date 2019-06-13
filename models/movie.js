@@ -36,14 +36,11 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     }
 
-
-// Sequelize documentation says sequelize adds these fields to the model by default    
-//    ,
-//
-//    createdAt: sequelize.DATE,
-//    updatedAt: sequelize.DATE
-
-    
+    // Sequelize documentation says sequelize adds these fields to the model by default
+    //    ,
+    //
+    //    createdAt: sequelize.DATE,
+    //    updatedAt: sequelize.DATE    
   });
   return Movie;
 };
