@@ -1,7 +1,3 @@
-var omdb = require("../../keys");
-var omdbKey = omdb.password;
-
-
 // Ajax call to OMDB
 
 $("#btn-search-movie").on("click", function (event) {
@@ -11,20 +7,26 @@ $("#btn-search-movie").on("click", function (event) {
     // grab text from input && remove trailing spaces
     var movie = $("#input-search").val().trim();
 
-    // URL
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=" + omdbKey;
-
-
-
     $.ajax({
-        url: queryURL,
+        url: "/api/password/",
         method: "GET"
     }).then(function (res) {
-        $("#input-search").val("");
-        console.log(res);
+        omdbSearch(res);
+    });
 
-        if (res.Response !== "False") {
-            $("#search-result").append(`
+    function omdbSearch(omdbKey) {
+        var queryURL =
+            "https://www.omdbapi.com/?t=" + movie + "&apikey=" + omdbKey;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (res) {
+
+            $("#input-search").val("");
+            console.log(res);
+
+            if (res.Response !== "False") {
+                $("#search-result").append(`
                 <div class="section-border" id="movie-details">
                     <div class="row">
                         <div class="col-sm-3 movie-details-side">
@@ -52,14 +54,16 @@ $("#btn-search-movie").on("click", function (event) {
                     </div>
                 </div>
             `);
-        } else {
-            $("#search-result").append(`
+            } else {
+                $("#search-result").append(`
                 <div class="section-border text-center" id="movie-details">
                     <h4>Sorry, movie not found!</h4>
                     <i class="fas fa-film fa-5x"></i>
                     <h4>Please try again.</h4>
                 </div>
             `);
-        }
-    });
+            }
+        });
+    }
+
 });

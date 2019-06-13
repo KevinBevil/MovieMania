@@ -1,10 +1,21 @@
 var db = require("../models");
+var omdb = require("../keys.js");
+var omdbKey = omdb.password;
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get movies from OMDB
+  app.get("/api/password", function(req, res) {
+    res.send(omdbKey);
+  });
+
+  // Get all movies on watch list
+  app.get("/api/movies", function(req, res) {
+    db.Movie.findAll({
+      where: {
+        watched: false
+      }
+    }).then(function(movies) {
+      res.json(movies);
     });
   });
 
@@ -17,7 +28,9 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.json(dbExample);
     });
   });
