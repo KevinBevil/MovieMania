@@ -33,7 +33,7 @@ $("#btn-search-movie").on("click", function (event) {
                             <img class="mb-3 movie-poster" src="${res.Poster}" alt="">
                             <div>
                                 <p><strong>Runtime:</strong> ${res.Runtime}</p>
-                                <p><strong>Genre:</strong> ${res.Genre}</p>
+                                <p><strong>Rated:</strong> ${res.Rated}</p>
                                 <p><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
                             </div>
                         </div>
@@ -48,11 +48,56 @@ $("#btn-search-movie").on("click", function (event) {
                                 <div class="movie-details-body">
                                     <p id="movie-director">Directed by ${res.Director}</p>
                                     <p class="movie-plot">${res.Plot}</p>
+                    
+                                    <!-- Tabs -->
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="tab-actors" data-toggle="tab" href="#actors" role="tab" aria-controls="actors" aria-selected="true">Actors</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tab-genre" data-toggle="tab" href="#genre" role="tab" aria-controls="genre" aria-selected="false">Genre</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tab-details" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="false">Details</a>
+                                        </li>
+                                    </ul>
+                    
+                                    <!-- tab contents -->
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="actors" role="tabpanel" aria-labelledby="tab-actors">
+                                            ${res.Actors}
+                                        </div>
+                                        <div class="tab-pane fade" id="genre" role="tabpanel" aria-labelledby="tab-genre">
+                                            ${res.Genre}
+                                        </div>
+                                        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="tab-details">
+                                            <table>
+                                                <tr>
+                                                    <td class="details-label">Production</td>
+                                                    <td class="details-body">${res.Genre}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="details-label">Writer</td>
+                                                    <td class="details-body">${res.Writer}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="details-label">Country</td>
+                                                    <td class="details-body">${res.Country}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="details-label">Language</td>
+                                                    <td class="details-body">${res.Language}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             `);
             } else {
                 $("#search-result").append(`

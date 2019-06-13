@@ -119,6 +119,24 @@ aside .section-border {
   line-height: 1.2;
 }
 
+/*** Tabs ***/
+#myTab .nav-link {
+  color: #2e5e72;
+  padding: 3px 30px;
+}
+
+#details td.details-label {
+  font-weight: 800;
+  padding-right: 15px;
+}
+
+#details td.details-body {
+  border-left: #062f42 solid 2px;
+  border-top: 15px solid #fff;
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
 
 
 /*** FOOTER ***/
