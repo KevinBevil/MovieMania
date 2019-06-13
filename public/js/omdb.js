@@ -40,7 +40,7 @@ $("#btn-search-movie").on("click", function (event) {
                     if (n > 0) {
                         writersArr[i] = writersArr[i].substring(0, n);
                     }
-                    
+
                     writers += writersArr[i] + ", ";
                 }
 
@@ -50,16 +50,26 @@ $("#btn-search-movie").on("click", function (event) {
                 $("#search-result").append(`
                 <div class="section-border" id="movie-details">
                     <div class="row">
-                        <div class="col-sm-3 movie-details-side">
+                        <div class="movie-details-side">
                             <img class="mb-3 movie-poster" src="${res.Poster}" alt="">
                             <div>
                                 <p><strong>Runtime:</strong> ${res.Runtime}</p>
                                 <p><strong>Rated:</strong> ${res.Rated}</p>
                                 <p><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
                             </div>
+                            <div class="mt-3 actions">
+                                <div class="btn-action-add"><i class="far fa-plus-square mr-2"></i>Add to List</div>
+                                <div class="btn-action-rate">
+                                    <i class="fas fa-star" data-stars="1"></i>
+                                    <i class="fas fa-star" data-stars="2"></i>
+                                    <i class="fas fa-star" data-stars="3"></i>
+                                    <i class="fas fa-star" data-stars="4"></i>
+                                    <i class="fas fa-star" data-stars="5"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-9">
-                            <div class="row px-3 movie-details-main">
+                        <div class="movie-details-main">
+                            <div class="row px-3">
                                 <div class="d-flex flex-wrap movie-details-header">
                                     <h2 class="mr-2" id="movie-title">
                                         ${res.Title}
