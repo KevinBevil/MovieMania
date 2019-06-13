@@ -25,7 +25,28 @@ $("#btn-search-movie").on("click", function (event) {
             $("#input-search").val("");
             console.log(res);
 
+            // check if movie exists in omdb
             if (res.Response !== "False") {
+                
+                // formatting the writers list to only return name
+                var writers = res.Writer;
+                var writersArr = writers.split(", ");
+                writers = "";
+
+                for (var i = 0; i < writersArr.length; i++) {
+                    var n = writersArr[i].indexOf(" (");
+
+                    // if ( exists, truncate there
+                    if (n > 0) {
+                        writersArr[i] = writersArr[i].substring(0, n);
+                    }
+                    
+                    writers += writersArr[i] + ", ";
+                }
+
+                writers = writers.slice(0, -2);
+
+                // Display result
                 $("#search-result").append(`
                 <div class="section-border" id="movie-details">
                     <div class="row">
@@ -64,10 +85,10 @@ $("#btn-search-movie").on("click", function (event) {
                     
                                     <!-- tab contents -->
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="actors" role="tabpanel" aria-labelledby="tab-actors">
+                                        <div class="mt-2 tab-pane fade show active" id="actors" role="tabpanel" aria-labelledby="tab-actors">
                                             ${res.Actors}
                                         </div>
-                                        <div class="tab-pane fade" id="genre" role="tabpanel" aria-labelledby="tab-genre">
+                                        <div class="mt-2 tab-pane fade" id="genre" role="tabpanel" aria-labelledby="tab-genre">
                                             ${res.Genre}
                                         </div>
                                         <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="tab-details">
@@ -78,7 +99,7 @@ $("#btn-search-movie").on("click", function (event) {
                                                 </tr>
                                                 <tr>
                                                     <td class="details-label">Writer</td>
-                                                    <td class="details-body">${res.Writer}</td>
+                                                    <td class="details-body">${writers}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="details-label">Country</td>

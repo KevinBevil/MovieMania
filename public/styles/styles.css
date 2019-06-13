@@ -122,12 +122,17 @@ aside .section-border {
 /*** Tabs ***/
 #myTab .nav-link {
   color: #2e5e72;
-  padding: 3px 30px;
+  padding: 3px 20px;
+}
+#myTab .nav-link.active {
+  color: #062f42;
+  font-weight: 800;
 }
 
 #details td.details-label {
   font-weight: 800;
   padding-right: 15px;
+  text-align: right;
 }
 
 #details td.details-body {
