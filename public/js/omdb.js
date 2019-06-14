@@ -25,20 +25,51 @@ $("#btn-search-movie").on("click", function (event) {
             $("#input-search").val("");
             console.log(res);
 
+            // check if movie exists in omdb
             if (res.Response !== "False") {
+                
+                // formatting the writers list to only return name
+                var writers = res.Writer;
+                var writersArr = writers.split(", ");
+                writers = "";
+
+                for (var i = 0; i < writersArr.length; i++) {
+                    var n = writersArr[i].indexOf(" (");
+
+                    // if ( exists, truncate there
+                    if (n > 0) {
+                        writersArr[i] = writersArr[i].substring(0, n);
+                    }
+
+                    writers += writersArr[i] + ", ";
+                }
+
+                writers = writers.slice(0, -2);
+
+                // Display result
                 $("#search-result").append(`
                 <div class="section-border" id="movie-details">
                     <div class="row">
-                        <div class="col-sm-3 movie-details-side">
+                        <div class="movie-details-side">
                             <img class="mb-3 movie-poster" src="${res.Poster}" alt="">
                             <div>
                                 <p><strong>Runtime:</strong> ${res.Runtime}</p>
-                                <p><strong>Genre:</strong> ${res.Genre}</p>
+                                <p><strong>Rated:</strong> ${res.Rated}</p>
                                 <p><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
                             </div>
+                            <div class="mt-3 actions">
+                                <div class="btn-action-add"><i class="far fa-plus-square mr-2"></i>Add to List</div>
+                                <div class="btn-action-rate">
+                                    <i class="fas fa-star" data-stars="1"></i>
+                                    <i class="fas fa-star" data-stars="2"></i>
+                                    <i class="fas fa-star" data-stars="3"></i>
+                                    <i class="fas fa-star" data-stars="4"></i>
+                                    <i class="fas fa-star" data-stars="5"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-9">
-                            <div class="row px-3 movie-details-main">
+                        <div class="movie-details-main">
+                            <div class="row px-3">
                                 <div class="d-flex flex-wrap movie-details-header">
                                     <h2 class="mr-2" id="movie-title">
                                         ${res.Title}
@@ -48,11 +79,56 @@ $("#btn-search-movie").on("click", function (event) {
                                 <div class="movie-details-body">
                                     <p id="movie-director">Directed by ${res.Director}</p>
                                     <p class="movie-plot">${res.Plot}</p>
+                    
+                                    <!-- Tabs -->
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="tab-actors" data-toggle="tab" href="#actors" role="tab" aria-controls="actors" aria-selected="true">Actors</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tab-genre" data-toggle="tab" href="#genre" role="tab" aria-controls="genre" aria-selected="false">Genre</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tab-details" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="false">Details</a>
+                                        </li>
+                                    </ul>
+                    
+                                    <!-- tab contents -->
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="mt-2 tab-pane fade show active" id="actors" role="tabpanel" aria-labelledby="tab-actors">
+                                            ${res.Actors}
+                                        </div>
+                                        <div class="mt-2 tab-pane fade" id="genre" role="tabpanel" aria-labelledby="tab-genre">
+                                            ${res.Genre}
+                                        </div>
+                                        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="tab-details">
+                                            <table>
+                                                <tr>
+                                                    <td class="details-label">Production</td>
+                                                    <td class="details-body">${res.Genre}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="details-label">Writer</td>
+                                                    <td class="details-body">${writers}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="details-label">Country</td>
+                                                    <td class="details-body">${res.Country}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="details-label">Language</td>
+                                                    <td class="details-body">${res.Language}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             `);
             } else {
                 $("#search-result").append(`

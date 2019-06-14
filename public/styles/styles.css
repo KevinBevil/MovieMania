@@ -91,12 +91,22 @@ main form #input-search {
   border-radius: 10px;
   box-shadow: inset 0px 0px 8px #2e5e72;
   margin-bottom: 20px;
-  padding: 15px 20px;
+  padding: 20px;
 }
 
 aside .section-border {
   border: #07686b44 double 4px;
   box-shadow: inset 0px 0px 8px #2e6272;
+}
+
+.movie-details-side {
+  padding: 0px 20px 0 15px;
+  width: 25%;
+}
+
+.movie-details-main {
+  padding-right: 15px;
+  width: 75%;
 }
 
 .movie-details-side p {
@@ -117,6 +127,29 @@ aside .section-border {
 
 .movie-details-body p {
   line-height: 1.2;
+}
+
+/*** Tabs ***/
+#myTab .nav-link {
+  color: #2e5e72;
+  padding: 3px 20px;
+}
+#myTab .nav-link.active {
+  color: #062f42;
+  font-weight: 800;
+}
+
+#details td.details-label {
+  font-weight: 800;
+  padding-right: 15px;
+  text-align: right;
+}
+
+#details td.details-body {
+  border-left: #062f42 solid 2px;
+  border-top: 15px solid #fff;
+  font-size: 1rem;
+  padding: 5px 10px;
 }
 
 
@@ -150,12 +183,32 @@ footer .developer:hover {
 }
 
 
+@media only screen and (max-width: 1200px) {
+  .movie-details-side {
+    width: 37%;
+  }
+
+  .movie-details-main {
+    width: 63%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .btn-action-rate .fa-star {
+    font-size: 1rem;
+  }
+
+  #myTab .nav-link {
+    padding: 3px 15px;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   #logo {
     font-size: 2rem;
     line-height: 1.2;
   }
-
+  
   main {
     width: 100%;
   }
@@ -166,6 +219,16 @@ footer .developer:hover {
 }
 
 @media only screen and (max-width: 470px) {
+  .movie-details-side {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .movie-details-main {
+    padding-left: 15px;
+    width: 100%;
+  }
+
   footer .developer {
     display: block;
   }

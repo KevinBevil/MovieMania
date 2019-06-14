@@ -3,7 +3,6 @@ new Vue({
     data: {
         movies: [
             {
-                // https://www.omdbapi.com/?t=avengers+endgame&apikey=trilogy
                 "Title": "Avengers: Endgame",
                 "Year": "2019",
                 "Rated": "PG-13",
@@ -43,7 +42,6 @@ new Vue({
                 "Website": "N/A",
                 "Response": "True"
             }, {
-                // https://www.omdbapi.com/?t=detective+pikachu&apikey=trilogy
                 "Title": "Pokémon Detective Pikachu",
                 "Year": "2019",
                 "Rated": "PG",
