@@ -75,6 +75,7 @@
                     <h5 v-for="movie in movies">{{ movie.Title }}</h5>
                     <p v-for="movie in movies">{{ movie.Year }}</p>
                 </div>
+
                 <div vue="watch-list"></div>
             </div>
         </aside>
@@ -83,26 +84,7 @@
 
 
     <footer>
-        <nav>
-            <ul class=" d-flex justify-content-center">
-                <!-- <li><a href="#">About</a></li> -->
-                <li><a href="https://github.com/KevinBevil/Project2" target="_blank"><i class="fab fa-github fa-3x"></i></a></li>
-                <!-- <li><a href="#">Contact</a></li> -->
-            </ul>
-
-            <p>
-                &copy; Movie Mania, made by:
-            </p>
-            <div class="dev-wrapper text-center">
-                <a class="developer" href="https://github.com/kevinbevil" target="_blank" rel="noopener noreferrer">Kevin Bevil</a>
-                <a class="developer" href="https://github.com/aangl3r" target="_blank" rel="noopener noreferrer">Justin
-                    Chastain</a>
-                <a class="developer" href="https://github.com/jwkeegan" target="_blank" rel="noopener noreferrer">Joe
-                    Keegan</a>
-                <a class="developer" href="https://github.com/dolaku" target="_blank" rel="noopener noreferrer">Donna
-                    Kuang</a>
-            </div>
-        </nav>
+        <div vue="footer"></div>
     </footer>
 
 
@@ -115,6 +97,7 @@
     <script src="./js/index.js"></script>
     <script src="./js/omdb.js"></script>
     <script src="./js/vue.js"></script>
+    <script src="./js/components/vueFooter.js"></script>
 
 
 
