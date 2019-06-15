@@ -21,6 +21,18 @@ module.exports = function(app) {
     });
   });
 
+  // Get one movie
+  app.get("/api/movies/:id", function(req, res) {
+    db.Movie.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Movie]
+    }).then(function(dbMovie) {
+      res.json(dbMovie);
+    });
+  });
+
   // Create a new movie
   app.post("/api/movies", function(req, res) {
     db.Movie.create(req.body).then(function(dbMovie) {
@@ -31,6 +43,15 @@ module.exports = function(app) {
   // Delete a movie by id
   app.delete("/api/movies/:id", function(req, res) {
     db.Movie.destroy({ where: { id: req.params.id } }).then(function(dbMovie) {
+      res.json(dbMovie);
+    });
+  });
+
+  // Watch or Unwatch a movie by id
+  app.put("/api/movies/:id", function(req, res) {
+    db.Movie.update(req.body, { where: { id: req.params.id } }).then(function(
+      dbMovie
+    ) {
       res.json(dbMovie);
     });
   });
