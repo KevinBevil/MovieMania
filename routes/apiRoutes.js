@@ -10,10 +10,15 @@ module.exports = function(app) {
   });
 
   // Get all movies on watch list
-  app.get("/api/movies", function(req, res) {
+  app.get("/api/movies/:watched", function(req, res) {
+    var watchedBool = false;
+    if (req.params.watched === "true") {
+      watchedBool = true;
+    }
+
     db.Movie.findAll({
       where: {
-        watched: false
+        watched: watchedBool
       }
     }).then(function(movies) {
       res.json(movies);
