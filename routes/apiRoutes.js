@@ -1,6 +1,8 @@
+require("dotenv").config();
 var db = require("../models");
-var omdb = require("../keys.js");
-var omdbKey = omdb.password;
+var keys = require("../keys.js");
+var Omdb = require("omdb");
+var omdbKey = keys.omdb.id;
 
 module.exports = function(app) {
   // Get movies from OMDB
