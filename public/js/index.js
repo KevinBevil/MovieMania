@@ -30,32 +30,21 @@ var API = {
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+// refreshWatchList gets new examples from the db and repopulates the list
+var refreshWatchList = function() {
+  API.getMovies().then(function(movies) {
+    var moviesList = [];
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+    for (var i = 0; i < movies.length; i++) {
+      moviesList.push({ title: movies[i].movieName });
+    }
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
+    new Vue({
+      el: "#vue-watch-list",
+      data: {
+        watchlist: moviesList
+      }
     });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
   });
 };
 
@@ -97,3 +86,5 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+refreshWatchList();
