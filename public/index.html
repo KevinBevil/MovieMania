@@ -43,6 +43,8 @@
                 <ul vue="movie-watch-list">
                     <li v-for="movie in watchlist">
                         {{ movie.title }}
+                        <button class="watch-movie" v-bind:data-id="movie.id">Move to Watched List</button>
+                        <button class="delete-movie" v-bind:data-id="movie.id">Delete</button>    
                     </li>
                     <!-- <movie-watch-list></movie-watch-list> -->
                 </ul>
@@ -76,7 +78,6 @@
 
     <script src="./js/index.js"></script>
     <script src="./js/omdb.js"></script>
-    <script src="./js/vue.js"></script>
     <script src="./js/components/vueHeader.js"></script>
     <script src="./js/components/vueFooter.js"></script>
 
