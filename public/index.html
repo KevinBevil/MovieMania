@@ -40,18 +40,11 @@
         <aside>
             <div class="section-border" id="to-watch-list">
                 <h3>Watch List</h3>
-                <div id="watch-list-wrapper">
-                    <div class="watch-list-movie d-flex">
-                        <h5>Aladdin</h5>
-                        <div class="watch-action ml-3">
-                            <i class="far fa-check-square ml-2"></i>
-                            <i class="far fa-trash-alt ml-2"></i>
-                        </div>
-                    </div>
-
-                    <h5>Beauty and the Beast</h5>
-                    <h5>The Lion King</h5>
-                </div>
+                <ul id="vue-watch-list">
+                    <li v-for="movie in watchlist">
+                        {{ movie.title }}
+                    </li>
+                </ul>
             </div>
 
             <div class="section-border" id="recently-rated">
