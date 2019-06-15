@@ -40,10 +40,11 @@
         <aside>
             <div class="section-border" id="to-watch-list">
                 <h3>Watch List</h3>
-                <ul id="vue-watch-list">
+                <ul vue="movie-watch-list">
                     <li v-for="movie in watchlist">
                         {{ movie.title }}
                     </li>
+                    <!-- <movie-watch-list></movie-watch-list> -->
                 </ul>
             </div>
 
