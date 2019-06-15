@@ -136,8 +136,8 @@ $(document).ready(function() {
   };
 
   // Add event listeners to the submit and delete buttons
-  $watchList.on("click", "#watch-movie", movieToWatchedList);
-  $watchList.on("click", "#delete-movie", deleteMovie);
+  $watchList.on("click", ".watch-movie", movieToWatchedList);
+  $watchList.on("click", ".delete-movie", deleteMovie);
   $searchResult.on("click", ".btn-action-add", addToWatchList);
 
   // initialize page by refreshing the watchlist
