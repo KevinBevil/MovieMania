@@ -1,11 +1,7 @@
 $(document).ready(function() {
   // Get references to page elements
-  // var $exampleText = $("#example-text");
-  // var $exampleDescription = $("#example-description");
-  var $submitBtn = $(".btn-action-add");
-  var $exampleList = $("#example-list");
-
   var $searchResult = $("#search-result");
+  var $watchList = $("#to-watch-list");
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -25,10 +21,17 @@ $(document).ready(function() {
         type: "GET"
       });
     },
-    deleteExample: function(id) {
+    deleteMovie: function(id) {
       return $.ajax({
-        url: "api/examples/" + id,
+        url: "api/movies/" + id,
         type: "DELETE"
+      });
+    },
+    updateMovie: function(id, update) {
+      return $.ajax({
+        url: "api/movies/" + id,
+        type: "PUT",
+        data: update
       });
     }
   };
@@ -46,7 +49,10 @@ $(document).ready(function() {
       var moviesList = [];
 
       for (var i = 0; i < movies.length; i++) {
-        moviesList.push({ title: movies[i].movieName });
+        moviesList.push({
+          title: movies[i].movieName,
+          id: movies[i].id
+        });
       }
 
       // Vue.component("movie-watch-list", {
@@ -61,10 +67,8 @@ $(document).ready(function() {
 
   // handleFormSubmit is called whenever we submit a new example
   // Save the new example to the db and refresh the list
-  var handleFormSubmit = function(event) {
+  var addToWatchList = function(event) {
     event.preventDefault();
-
-    console.log("hello friends");
 
     var movieDetails = $(this).parents("#movie-details");
     var movieTitle = movieDetails
@@ -98,7 +102,6 @@ $(document).ready(function() {
     // }
 
     API.addNewMovie(newMovie).then(function() {
-      console.log("this worked, let's refresh");
       refreshWatchList();
       $("#search-result").empty();
     });
@@ -116,20 +119,26 @@ $(document).ready(function() {
 
   // handleDeleteBtnClick is called when an example's delete button is clicked
   // Remove the example from the db and refresh the list
-  var handleDeleteBtnClick = function() {
-    var idToDelete = $(this)
-      .parent()
-      .attr("data-id");
+  var deleteMovie = function() {
+    var idToDelete = $(this).attr("data-id");
 
-    API.deleteExample(idToDelete).then(function() {
-      refreshExamples();
+    API.deleteMovie(idToDelete).then(function() {
+      refreshWatchList();
+    });
+  };
+
+  var movieToWatchedList = function() {
+    var idToUpdate = $(this).attr("data-id");
+
+    API.updateMovie(idToUpdate, { watched: true }).then(function() {
+      refreshWatchList();
     });
   };
 
   // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", "#add-watch-list", handleFormSubmit);
-  $exampleList.on("click", ".delete", handleDeleteBtnClick);
-  $searchResult.on("click", ".btn-action-add", handleFormSubmit);
+  $watchList.on("click", "#watch-movie", movieToWatchedList);
+  $watchList.on("click", "#delete-movie", deleteMovie);
+  $searchResult.on("click", ".btn-action-add", addToWatchList);
 
   // initialize page by refreshing the watchlist
   refreshWatchList();
