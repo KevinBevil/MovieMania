@@ -55,7 +55,7 @@ $("#btn-search-movie").on("click", function (event) {
                             <div>
                                 <p><strong>Runtime:</strong> ${res.Runtime}</p>
                                 <p><strong>Rated:</strong> ${res.Rated}</p>
-                                <p><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
+                                <p id="imdb-rating"><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
                             </div>
                             <div class="mt-3 actions">
                                 <div class="btn-action-add"><i class="far fa-plus-square mr-2"></i>Add to List</div>
