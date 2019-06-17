@@ -2,6 +2,7 @@ $(document).ready(function() {
   // Get references to page elements
   var $searchResult = $("#search-result");
   var $watchList = $("#to-watch-list");
+  var $watchedList = $("#recently-rated");
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -15,9 +16,10 @@ $(document).ready(function() {
         data: JSON.stringify(newMovie)
       });
     },
-    getMovies: function() {
+    getMovies: function(watched) {
+      console.log(watched);
       return $.ajax({
-        url: "api/movies",
+        url: "api/movies/" + watched,
         type: "GET"
       });
     },
@@ -39,30 +41,39 @@ $(document).ready(function() {
   var movieWatchList = new Vue({
     el: "[vue='movie-watch-list']",
     data: {
-      watchlist: []
+      list: []
+    }
+  });
+
+  var movieWatchedList = new Vue({
+    el: "[vue='movie-watched-list']",
+    data: {
+      list: []
     }
   });
 
   // refreshWatchList gets new examples from the db and repopulates the list
   var refreshWatchList = function() {
-    API.getMovies().then(function(movies) {
-      var moviesList = [];
-
-      for (var i = 0; i < movies.length; i++) {
-        moviesList.push({
-          title: movies[i].movieName,
-          id: movies[i].id
-        });
-      }
-
-      // Vue.component("movie-watch-list", {
-      //   data: {
-      //     watchlist: moviesList
-      //   }
-      // });
-
-      movieWatchList.watchlist = moviesList;
+    API.getMovies("false").then(function(movies) {
+      renderList(movies, movieWatchList);
     });
+
+    API.getMovies("true").then(function(watchedMovies) {
+      renderList(watchedMovies, movieWatchedList);
+    });
+  };
+
+  var renderList = function(movies, vueElement) {
+    var moviesList = [];
+
+    for (var i = 0; i < movies.length; i++) {
+      moviesList.push({
+        title: movies[i].movieName,
+        id: movies[i].id
+      });
+    }
+
+    vueElement.list = moviesList;
   };
 
   // handleFormSubmit is called whenever we submit a new example
@@ -135,9 +146,19 @@ $(document).ready(function() {
     });
   };
 
+  var movieToWatchList = function() {
+    var idToUpdate = $(this).attr("data-id");
+
+    API.updateMovie(idToUpdate, { watched: false }).then(function() {
+      refreshWatchList();
+    });
+  };
+
   // Add event listeners to the submit and delete buttons
   $watchList.on("click", ".watch-movie", movieToWatchedList);
+  $watchedList.on("click", ".unwatch-movie", movieToWatchList);
   $watchList.on("click", ".delete-movie", deleteMovie);
+  $watchedList.on("click", ".delete-movie", deleteMovie);
   $searchResult.on("click", ".btn-action-add", addToWatchList);
 
   // initialize page by refreshing the watchlist

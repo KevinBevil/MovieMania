@@ -105,7 +105,7 @@ $("#btn-search-movie").on("click", function (event) {
                                             <table>
                                                 <tr>
                                                     <td class="details-label">Production</td>
-                                                    <td class="details-body">${res.Genre}</td>
+                                                    <td class="details-body">${res.Production}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="details-label">Writer</td>
