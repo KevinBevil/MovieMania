@@ -144,17 +144,7 @@ aside .section-border {
   line-height: 1.2;
 }
 
-.delete-movie {
-  float: right;
-  padding-left: 5px
-}
-
-.watch-movie {
-  float: right;
-  padding-left: 5px
-}
-
-.unwatch-movie {
+.action-icon {
   float: right;
   padding-left: 5px
 }

@@ -58,8 +58,8 @@
                 <h3>Watch List</h3>
                 <ul vue="movie-watch-list">
                     <li class="list-item-border" v-for="movie in list">
-                        <span title="Delete this movie" class="delete-movie" v-bind:data-id="movie.id"><i class="fas fa-times"></i></span>
-                        <span title="Watch this movie" class="watch-movie" v-bind:data-id="movie.id"><i class="far fa-check-square"></i></span>    
+                        <span title="Delete this movie" class="delete-movie action-icon" v-bind:data-id="movie.id"><i class="fas fa-times"></i></span>
+                        <span title="Watch this movie" class="watch-movie action-icon" v-bind:data-id="movie.id"><i class="far fa-check-square"></i></span>    
                         {{ movie.title }}
                     </li>
                     <!-- <movie-watch-list></movie-watch-list> -->
@@ -70,10 +70,10 @@
                 <h3>Recently Rated</h3>
                 <ul vue="movie-watched-list">
                     <li class="list-item-border" v-for="movie in list">
-                        {{ movie.title }}
                         <span v-if="movie.userRating" class="user-rating">Your Rating: {{movie.userRating}}</span>
-                        <span title="Delete this movie" class="watch-movie" v-bind:data-id="movie.id"><i class="fas fa-times"></i></span>
-                        <span title="Move back to Watch List" class="unwatch-movie" v-bind:data-id="movie.id"><i class="far fa-eye-slash"></i></span>
+                        <span title="Delete this movie" class="watch-movie action-icon" v-bind:data-id="movie.id"><i class="fas fa-times"></i></span>
+                        <span title="Move back to Watch List" class="unwatch-movie action-icon" v-bind:data-id="movie.id"><i class="far fa-eye-slash"></i></span>
+                        {{ movie.title }}
                     </li>
                 </ul>
                 
