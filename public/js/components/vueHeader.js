@@ -8,7 +8,7 @@ var header = new Vue({
             <div class="col-12 d-flex justify-content-between align-items-center">
                 <a href="#" id="logo">Movie Mania</a>
                 <div class="text-right signin-nav">
-                    <a href="#" onclick="signOut();">Sign out</a>
+                    <a href="#" id="my-signoff2" onclick="signOut();">Sign out</a>
                     <div id="my-signin2"></div>
                     <nav>
                         <ul class="d-flex">
