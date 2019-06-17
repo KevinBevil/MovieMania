@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: false
     },
+    movieActors: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
     movieGenre: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -26,7 +30,19 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    tomatoesRating: {
+    movieProduction: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    movieWriter: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    movieCountry: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    movieLanguage: {
       type: DataTypes.STRING(30),
       allowNull: false
     },
@@ -35,12 +51,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     }
-
-    // Sequelize documentation says sequelize adds these fields to the model by default
-    //    ,
-    //
-    //    createdAt: sequelize.DATE,
-    //    updatedAt: sequelize.DATE    
   });
   return Movie;
 };
