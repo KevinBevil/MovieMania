@@ -1,6 +1,7 @@
 require("dotenv").config();
 var db = require("../models");
 var keys = require("../keys.js");
+var Omdb = require("omdb");
 var omdbKey = keys.omdb.id;
 
 module.exports = function(app) {
