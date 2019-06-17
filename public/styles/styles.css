@@ -38,6 +38,13 @@ nav ul li {
   right: 0;
 }
 
+#my-signoff2 {
+  width: 240px;
+  height: 50px;
+  font-weight: 300;
+}
+
+
 .signin-nav nav {
   position: relative;
   top: 34px;
