@@ -10,7 +10,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    movieRunTime: {
+    moviePoster: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    movieRuntime: {
       type: DataTypes.STRING(100),
       allowNull: false
     },
@@ -19,6 +23,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     movieActors: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    movieDirector: {
       type: DataTypes.STRING(100),
       allowNull: false
     },
