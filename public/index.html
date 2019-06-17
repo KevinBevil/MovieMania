@@ -50,30 +50,33 @@
 
         <div id="search-result">
           <!-- Displays omdb Search Results -->
-        </div>
-      </main>
+        </div>     
+        </main>
 
-      <aside>
-        <div class="section-border" id="to-watch-list">
-          <h3>Watch List</h3>
-          <ul id="vue-watch-list">
-            <li v-for="movie in watchlist">
-              {{ movie.title }}
-            </li>
-          </ul>
-        </div>
+        <aside>
+            <div class="section-border" id="to-watch-list">
+                <h3>Watch List</h3>
+                <ul vue="movie-watch-list">
+                    <li v-for="movie in watchlist">
+                        {{ movie.title }}
+                        <button class="watch-movie" v-bind:data-id="movie.id">Move to Watched List</button>
+                        <button class="delete-movie" v-bind:data-id="movie.id">Delete</button>    
+                    </li>
+                    <!-- <movie-watch-list></movie-watch-list> -->
+                </ul>
+            </div>
 
-        <div class="section-border" id="recently-rated">
-          <h3>Recently Rated</h3>
-          <p>{{ main }}</p>
-          <div class="to-watch-movie">
-            <h5 v-for="movie in movies">{{ movie.Title }}</h5>
-            <p v-for="movie in movies">{{ movie.Year }}</p>
-          </div>
+            <div class="section-border" id="recently-rated">
+                <h3>Recently Rated</h3>
+                <p>{{ main }}</p>
+                <div class="to-watch-movie">
+                    <h5 v-for="movie in movies">{{ movie.Title }}</h5>
+                    <p v-for="movie in movies">{{ movie.Year }}</p>
+                </div>
 
-          <div vue="watch-list"></div>
-        </div>
-      </aside>
+                <div vue="watch-list"></div>
+            </div>
+        </aside>
     </div>
 
     <footer>
@@ -155,7 +158,6 @@
 
     <script src="./js/index.js"></script>
     <script src="./js/omdb.js"></script>
-    <script src="./js/vue.js"></script>
     <script src="./js/components/vueHeader.js"></script>
     <script src="./js/components/vueFooter.js"></script>
     <script
