@@ -163,6 +163,14 @@ ul {
   list-style: none;
 }
 
+.list-item-border {
+  border: #074d6b44 solid 2px;
+  border-radius: 5px;
+  /* box-shadow: inset 0px 0px 8px #2e5e72; */
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
 /*** Tabs ***/
 #myTab .nav-link {
   color: #2e5e72;
