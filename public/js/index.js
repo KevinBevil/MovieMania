@@ -90,7 +90,6 @@ $(document).ready(function() {
       .split(" ");
     movieTitle = movieTitle.slice(0, movieTitle.length - 1).join(" ");
     var movieYear = getDataFromElement(movieDetails, "#movie-year");
-    var movieGenre = getDataFromElement(movieDetails, "#genre");
     var moviePlot = getDataFromElement(movieDetails, ".movie-plot");
     var imdbRating = getDataFromElement(movieDetails, "#imdb-rating").split(
       " "
@@ -100,7 +99,6 @@ $(document).ready(function() {
     var newMovie = {
       movieName: movieTitle,
       movieYear: movieYear,
-      movieGenre: movieGenre,
       moviePlot: moviePlot,
       IMDBrating: imdbRating,
       tomatoesRating: 7.0,
