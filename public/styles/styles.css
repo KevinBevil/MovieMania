@@ -144,6 +144,25 @@ aside .section-border {
   line-height: 1.2;
 }
 
+.delete-movie {
+  float: right;
+  padding-left: 5px
+}
+
+.watch-movie {
+  float: right;
+  padding-left: 5px
+}
+
+.unwatch-movie {
+  float: right;
+  padding-left: 5px
+}
+
+ul {
+  list-style: none;
+}
+
 /*** Tabs ***/
 #myTab .nav-link {
   color: #2e5e72;
