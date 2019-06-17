@@ -20,7 +20,8 @@ module.exports = function(app) {
     db.Movie.findAll({
       where: {
         watched: watchedBool
-      }
+      },
+      order: [["updatedAt", "ASC"]]
     }).then(function(movies) {
       res.json(movies);
     });
