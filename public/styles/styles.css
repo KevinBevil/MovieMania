@@ -28,6 +28,21 @@ nav ul li {
   text-align: center;
 }
 
+.signin-nav {
+  position: relative;
+  top: -10px;
+}
+
+#my-signin2 {
+  position: absolute;
+  right: 0;
+}
+
+.signin-nav nav {
+  position: relative;
+  top: 34px;
+}
+
 nav ul li:last-child {
   margin-right: 0;
   padding-right: 0;
