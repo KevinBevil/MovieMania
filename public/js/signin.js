@@ -7,14 +7,28 @@ function onSuccess(googleUser) {
   var pic = googleUser.getBasicProfile().getImageUrl();
 
   $("footer").before(`<p id="user">${user}</p>`);
-  $("p").append(`<p id="email">${email}</p>`)
-  $("p").append(`<p id="pic">${pic}</p>`)
+  $("p").append(`<p id="email">${email}</p>`);
+  $("p").append(`<p id="pic">${pic}</p>`);
   $("p").hide();
 
   onSignIn(googleUser);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
 }
+$(document).ready(function() {
+  $("body").change(function() {
+    var $user = $("#user").value();
+    var $email = $("#email").value();
+    var $pic = $("#pic").value();
+
+    var newUser = {
+      userName: $user,
+      email: $email,
+      pic: $pic
+    };
+    console.log("!!!" + newUser);
+  });
+});
 
 function onFailure(error) {
   console.log(error);
