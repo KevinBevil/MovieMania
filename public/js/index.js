@@ -66,10 +66,18 @@ $(document).ready(function() {
     var moviesList = [];
 
     for (var i = 0; i < movies.length; i++) {
-      moviesList.push({
-        title: movies[i].movieName,
-        id: movies[i].id
-      });
+      if (movies[i].userRating > 0) {
+        moviesList.push({
+          title: movies[i].movieName,
+          userRating: movies[i].userRating,
+          id: movies[i].id
+        });
+      } else {
+        moviesList.push({
+          title: movies[i].movieName,
+          id: movies[i].id
+        });
+      }
     }
 
     vueElement.list = moviesList;
@@ -105,7 +113,14 @@ $(document).ready(function() {
     var movieCountry = getDataFromElement(movieDetails, "#movie-country");
     var movieLanguage = getDataFromElement(movieDetails, "#movie-language");
 
-    console.log(movieWriter);
+    var movieWatched = false;
+    var userRating = 0;
+    movieDetails.find(".star").each(function() {
+      if ($(this).hasClass("selected")) {
+        movieWatched = true;
+        userRating++;
+      }
+    });
 
     var newMovie = {
       movieName: movieTitle,
@@ -122,7 +137,8 @@ $(document).ready(function() {
       movieWriter: movieWriter,
       movieCountry: movieCountry,
       movieLanguage: movieLanguage,
-      watched: false
+      watched: movieWatched,
+      userRating: userRating
     };
 
     // if (!(example.text && example.description)) {
@@ -172,12 +188,25 @@ $(document).ready(function() {
     });
   };
 
+  var rateMovie = function() {
+    var rating = $(this).data("value");
+    var idToUpdate = $(this)
+      .parents(".list-item-border")
+      .find("span")
+      .attr("data-id");
+    API.updateMovie(idToUpdate, { userRating: rating }).then(function() {
+      refreshWatchList();
+    });
+  };
+
   // Add event listeners to the submit and delete buttons
   $watchList.on("click", ".watch-movie", movieToWatchedList);
   $watchedList.on("click", ".unwatch-movie", movieToWatchList);
   $watchList.on("click", ".delete-movie", deleteMovie);
   $watchedList.on("click", ".delete-movie", deleteMovie);
   $searchResult.on("click", ".btn-action-add", addToWatchList);
+
+  $watchedList.on("click", ".star", rateMovie);
 
   // initialize page by refreshing the watchlist
   refreshWatchList();
