@@ -60,4 +60,10 @@ module.exports = function(app) {
       res.json(dbMovie);
     });
   });
+
+  app.post("/login", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      console.log(dbUser);
+    })
+  })
 };

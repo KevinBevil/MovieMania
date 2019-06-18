@@ -3,19 +3,30 @@ $("#my-signoff2").hide();
 function onSuccess(googleUser) {
   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
   var user = googleUser.getBasicProfile().getName();
-  var email = googleUser.getBasicProfile().getEmail();
-  var pic = googleUser.getBasicProfile().getImageUrl();
+  var userEmail = googleUser.getBasicProfile().getEmail();
+  var userPic = googleUser.getBasicProfile().getImageUrl();
 
-  $("footer").before(`<p id="user">${user}</p>`);
-  $("p").append(`<p id="email">${email}</p>`);
-  $("p").append(`<p id="pic">${pic}</p>`);
-  $("p").hide();
+  $("footer").before(`<p><div class="user-info" id="user">${user}</div>
+  <div class="user-info" id="email">${userEmail}</div>
+  <div class="user-info" id="pic">${userPic}</div></p>`);
+  $(".user-info").hide();
 
   onSignIn(googleUser);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
 
-};
+  axios.post("/login", {
+    userName: user,
+    email: userEmail,
+    pic: userPic
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
 function onFailure(error) {
   console.log(error);
