@@ -159,6 +159,23 @@ aside .section-border {
   line-height: 1.2;
 }
 
+.action-icon {
+  float: right;
+  padding-left: 5px
+}
+
+ul {
+  list-style: none;
+}
+
+.list-item-border {
+  border: #074d6b44 solid 2px;
+  border-radius: 5px;
+  /* box-shadow: inset 0px 0px 8px #2e5e72; */
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
 .btn-action-add {
   cursor: pointer;
   display: block;
@@ -169,7 +186,6 @@ aside .section-border {
   color: #4aa0c2;
   text-shadow: #2e5e72 0px 0px 5px;
 }
-
 
 /*** Stars ***/
 /* Rating Star Widgets Style */
