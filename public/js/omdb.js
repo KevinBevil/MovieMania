@@ -59,13 +59,29 @@ $("#btn-search-movie").on("click", function (event) {
                             </div>
                             <div class="mt-3 actions">
                                 <div class="btn-action-add"><i class="far fa-plus-square mr-2"></i>Add to List</div>
-                                <div class="btn-action-rate">
-                                    <i class="fas fa-star" data-stars="1"></i>
-                                    <i class="fas fa-star" data-stars="2"></i>
-                                    <i class="fas fa-star" data-stars="3"></i>
-                                    <i class="fas fa-star" data-stars="4"></i>
-                                    <i class="fas fa-star" data-stars="5"></i>
-                                </div>
+                                <section class='rating-widget'>
+                                    <!-- Rating Stars Box -->
+                                    <div class='rating-stars'>
+                                    <ul class='stars'>
+                                        <li class='star' title='Poor' data-value='1'>
+                                        <i class='fas fa-star'></i>
+                                        </li>
+                                        <li class='star' title='Fair' data-value='2'>
+                                        <i class='fas fa-star'></i>
+                                        </li>
+                                        <li class='star' title='Good' data-value='3'>
+                                        <i class='fas fa-star'></i>
+                                        </li>
+                                        <li class='star' title='Excellent' data-value='4'>
+                                        <i class='fas fa-star'></i>
+                                        </li>
+                                        <li class='star' title='WOW!!!' data-value='5'>
+                                        <i class='fas fa-star'></i>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </section>
+                                
                             </div>
                         </div>
                         <div class="movie-details-main">
@@ -122,13 +138,11 @@ $("#btn-search-movie").on("click", function (event) {
                                             </table>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             `);
             } else {
                 $("#search-result").append(`
@@ -141,5 +155,4 @@ $("#btn-search-movie").on("click", function (event) {
             }
         });
     }
-
 });
