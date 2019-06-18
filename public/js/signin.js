@@ -15,17 +15,18 @@ function onSuccess(googleUser) {
   $("#my-signin2").hide();
   $("#my-signoff2").show();
 
-  axios.post("/login", {
-    userName: user,
-    email: userEmail,
-    pic: userPic
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  axios
+    .post("/login", {
+      userName: user,
+      email: userEmail,
+      pic: userPic
+    })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 }
 
 function onFailure(error) {
