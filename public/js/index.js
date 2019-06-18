@@ -17,7 +17,6 @@ $(document).ready(function() {
       });
     },
     getMovies: function(watched) {
-      console.log(watched);
       return $.ajax({
         url: "api/movies/" + watched,
         type: "GET"
@@ -96,14 +95,33 @@ $(document).ready(function() {
       " "
     );
     imdbRating = imdbRating[imdbRating.length - 1];
+    var moviePoster = $(".movie-poster").attr("src");
+    var movieRuntime = getDataFromElement(movieDetails, "#run-time");
+    var movieRating = getDataFromElement(movieDetails, "#movie-rating");
+    var movieActors = getDataFromElement(movieDetails, "#actors");
+    var movieDirector = getDataFromElement(movieDetails, "#movie-director");
+    var movieProduction = getDataFromElement(movieDetails, "#movie-production");
+    var movieWriter = getDataFromElement(movieDetails, "#movie-writers");
+    var movieCountry = getDataFromElement(movieDetails, "#movie-country");
+    var movieLanguage = getDataFromElement(movieDetails, "#movie-language");
+
+    console.log(movieWriter);
 
     var newMovie = {
       movieName: movieTitle,
-      movieYear: movieYear,
+      moviePoster: moviePoster,
+      movieRuntime: movieRuntime,
+      movieRating: movieRating,
+      movieActors: movieActors,
+      movieDirector: movieDirector,
       movieGenre: movieGenre,
       moviePlot: moviePlot,
+      movieYear: movieYear,
       IMDBrating: imdbRating,
-      tomatoesRating: 7.0,
+      movieProduction: movieProduction,
+      movieWriter: movieWriter,
+      movieCountry: movieCountry,
+      movieLanguage: movieLanguage,
       watched: false
     };
 

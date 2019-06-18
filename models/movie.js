@@ -47,11 +47,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     movieProduction: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     movieWriter: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     movieCountry: {
