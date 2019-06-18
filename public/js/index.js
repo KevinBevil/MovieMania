@@ -105,7 +105,14 @@ $(document).ready(function() {
     var movieCountry = getDataFromElement(movieDetails, "#movie-country");
     var movieLanguage = getDataFromElement(movieDetails, "#movie-language");
 
-    console.log(movieWriter);
+    var movieWatched = false;
+    var userRating = 0;
+    movieDetails.find(".star").each(function() {
+      if ($(this).hasClass("selected")) {
+        movieWatched = true;
+        userRating++;
+      }
+    });
 
     var newMovie = {
       movieName: movieTitle,
@@ -122,7 +129,8 @@ $(document).ready(function() {
       movieWriter: movieWriter,
       movieCountry: movieCountry,
       movieLanguage: movieLanguage,
-      watched: false
+      watched: movieWatched,
+      userRating: userRating
     };
 
     // if (!(example.text && example.description)) {
