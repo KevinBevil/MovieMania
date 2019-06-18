@@ -1,4 +1,3 @@
-var $ = require("jquery");
 // Ajax call to OMDB
 
 $("#btn-search-movie").on("click", function (event) {
