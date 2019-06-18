@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
     /* 1. Visualizing things on Hover - See next part for action on click */
-    $('#search-result').on('mouseover', '.star', function(){
+    $('.star-holder').on('mouseover', '.star', function(){
       // The star currently selected
       var ratingValue = parseInt($(this).data('value'), 10); // The star currently mouse on
      
@@ -21,7 +21,7 @@ $(document).ready(function(){
       });
     });
     /* 2. Action to perform on click */
-    $('#search-result').on('click', '.star', function(){
+    $('.star-holder').on('click', '.star', function(){
       // The star currently selected
       var ratingValue = parseInt($(this).data('value'), 10); 
       var stars = $(this).parent().children('li.star');
