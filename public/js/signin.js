@@ -14,21 +14,8 @@ function onSuccess(googleUser) {
   onSignIn(googleUser);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
-}
-$(document).ready(function() {
-  $("body").change(function() {
-    var $user = $("#user").value();
-    var $email = $("#email").value();
-    var $pic = $("#pic").value();
 
-    var newUser = {
-      userName: $user,
-      email: $email,
-      pic: $pic
-    };
-    console.log("!!!" + newUser);
-  });
-});
+};
 
 function onFailure(error) {
   console.log(error);
