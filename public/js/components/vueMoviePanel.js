@@ -55,7 +55,7 @@ var moviePanel = new Vue({
                     country: "USA, UK",
                     language: "English, Japanese, French",
                     watched: true,
-                    ratingValue: 5
+                    ratingValue: 2
                 },
                 {
                     poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
@@ -78,12 +78,17 @@ var moviePanel = new Vue({
             ]
         }
     },
+    methods: {
+        stars: function() {
+            this.userRating
+        }
+    },
     template: `
     <div>
         <div v-for="(movie, index) in movies" v-if="movie.ratingValue" class="section-border">
             <div class="row">
                 <div class="movie-details-side">
-                    <img class="mb-3 movie-poster" v-bind:src="movie.poster" alt="">
+                    <img class="mb-3 movie-poster" :src="movie.poster" alt="">
                     <div>
                         <p><strong>Runtime:</strong> {{ movie.runtime }}</p>
                         <p><strong>Rated:</strong> {{ movie.rated }}</p>
@@ -93,23 +98,7 @@ var moviePanel = new Vue({
                         <section class='rating-widget'>
                             <!-- Rating Stars Box -->
                             <div class='rating-stars'>
-                            <ul id='stars'>
-                                <li class='star' title='Poor' data-value='1'>
-                                <i class='fas fa-star'></i>
-                                </li>
-                                <li class='star' title='Fair' data-value='2'>
-                                <i class='fas fa-star'></i>
-                                </li>
-                                <li class='star' title='Good' data-value='3'>
-                                <i class='fas fa-star'></i>
-                                </li>
-                                <li class='star' title='Excellent' data-value='4'>
-                                <i class='fas fa-star'></i>
-                                </li>
-                                <li class='star' title='WOW!!!' data-value='5'>
-                                <i class='fas fa-star'></i>
-                                </li>
-                            </ul>
+                                <genStars :userRating="movie.ratingValue"></genStars>
                             </div>
                         </section>
                         
@@ -174,3 +163,4 @@ var moviePanel = new Vue({
     </div>
     `
 });
+
