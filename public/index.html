@@ -53,36 +53,44 @@
         </div>
       </main>
 
+      <aside>
+        <div class="section-border" id="to-watch-list">
+          <h3>Watch List</h3>
+          <ul vue="movie-watch-list">
+            <li v-for="movie in list">
+              {{ movie.title }}
+              <button class="watch-movie" v-bind:data-id="movie.id">
+                Move to Watched List
+              </button>
+              <button class="delete-movie" v-bind:data-id="movie.id">
+                Delete
+              </button>
+            </li>
+            <!-- <movie-watch-list></movie-watch-list> -->
+          </ul>
+        </div>
 
-        <aside>
-            <div class="section-border" id="to-watch-list">
-                <h3>Watch List</h3>
-                <ul vue="movie-watch-list">
-                    <li v-for="movie in list">
-                        {{ movie.title }}
-                        <button class="watch-movie" v-bind:data-id="movie.id">Move to Watched List</button>
-                        <button class="delete-movie" v-bind:data-id="movie.id">Delete</button>    
-                    </li>
-                    <!-- <movie-watch-list></movie-watch-list> -->
-                </ul>
-            </div>
+        <div class="section-border" id="recently-rated">
+          <h3>Recently Rated</h3>
+          <ul vue="movie-watched-list">
+            <li v-for="movie in list">
+              {{ movie.title }}
+              <span v-if="movie.userRating" class="user-rating"
+                >Your Rating: {{ movie.userRating }}</span
+              >
+              <button class="unwatch-movie" v-bind:data-id="movie.id">
+                Unwatch
+              </button>
+              <button class="delete-movie" v-bind:data-id="movie.id">
+                Delete
+              </button>
+            </li>
+          </ul>
 
-            <div class="section-border" id="recently-rated">
-                <h3>Recently Rated</h3>
-                <ul vue="movie-watched-list">
-                    <li v-for="movie in list">
-                        {{ movie.title }}
-                        <span v-if="movie.userRating" class="user-rating">Your Rating: {{movie.userRating}}</span>
-                        <button class="unwatch-movie" v-bind:data-id="movie.id">Unwatch</button>
-                        <button class="delete-movie" v-bind:data-id="movie.id">Delete</button>
-                    </li>
-                </ul>
-                
-                <!-- <div class="to-watch-movie">
+          <!-- <div class="to-watch-movie">
                     <h5 v-for="movie in movies">{{ movie.Title }}</h5>
                     <p v-for="movie in movies">{{ movie.Year }}</p>
                 </div> -->
-
 
           <div vue="watch-list"></div>
         </div>

@@ -2,12 +2,16 @@ $("#my-signoff2").hide();
 
 function onSuccess(googleUser) {
   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
-  var loggedOnName = googleUser.getBasicProfile().getName();
+  var user = googleUser.getBasicProfile().getName();
+  var id_token = googleUser.getAuthResponse().id_token;
   var auth = (gapi.auth2.getAuthInstance());
-  console.log(auth.Ay);
+  console.log(user);
+  console.log(id_token);
+  onSignIn(googleUser);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
 }
+
 function onFailure(error) {
   console.log(error);
 }
@@ -66,3 +70,19 @@ function signInCallback(authResult) {
     // There was an error.
   }
 }
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(CLIENT_ID);
+
+async function verify() {
+  const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+      // Or, if multiple clients access the backend:
+      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+  });
+  const payload = ticket.getPayload();
+  const userid = payload['sub'];
+  // If request specified a G Suite domain:
+  //const domain = payload['hd'];
+}
+verify().catch(console.error);
