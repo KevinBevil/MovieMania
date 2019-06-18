@@ -53,8 +53,8 @@ $("#btn-search-movie").on("click", function (event) {
                         <div class="movie-details-side">
                             <img class="mb-3 movie-poster" src="${res.Poster}" alt="">
                             <div>
-                                <p><strong>Runtime:</strong> ${res.Runtime}</p>
-                                <p><strong>Rated:</strong> ${res.Rated}</p>
+                                <p id="run-time"><strong>Runtime:</strong> ${res.Runtime}</p>
+                                <p id="movie-rating"><strong>Rated:</strong> ${res.Rated}</p>
                                 <p id="imdb-rating"><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
                             </div>
                             <div class="mt-3 actions">
@@ -105,19 +105,19 @@ $("#btn-search-movie").on("click", function (event) {
                                             <table>
                                                 <tr>
                                                     <td class="details-label">Production</td>
-                                                    <td class="details-body">${res.Production}</td>
+                                                    <td id="movie-production" class="details-body">${res.Production}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="details-label">Writer</td>
-                                                    <td class="details-body">${writers}</td>
+                                                    <td id="movie-writers" class="details-body">${writers}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="details-label">Country</td>
-                                                    <td class="details-body">${res.Country}</td>
+                                                    <td id="movie-country" class="details-body">${res.Country}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="details-label">Language</td>
-                                                    <td class="details-body">${res.Language}</td>
+                                                    <td id="movie-language" class="details-body">${res.Language}</td>
                                                 </tr>
                                             </table>
                                         </div>
