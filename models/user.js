@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING(100),
       allowNull: false
+    },
+    pic: {
+      type: DataTypes.STRING(100),
+      allowNull: true
     }
   });
   return User;
