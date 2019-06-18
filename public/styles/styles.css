@@ -45,6 +45,14 @@ nav ul li {
   color: #4285f4;
 }
 
+.signin-nav .abcRioButtonBlue {
+  background-color: #2e5e72;
+}
+
+.signin-nav .abcRioButtonBlue:hover {
+  background-color: #4aa0c2;
+  box-shadow: #2e5e72 0px 0px 10px;
+}
 
 .signin-nav nav {
   position: relative;
@@ -152,6 +160,17 @@ aside .section-border {
   line-height: 1.2;
 }
 
+.btn-action-add {
+  cursor: pointer;
+  display: block;
+  width: 100px;
+}
+
+.btn-action-add:hover {
+  color: #4aa0c2;
+  text-shadow: #2e5e72 0px 0px 5px;
+}
+
 .action-icon {
   float: right;
   padding-left: 5px
@@ -161,13 +180,37 @@ ul {
   list-style: none;
 }
 
-.list-item-border {
-  border: #074d6b44 solid 2px;
-  border-radius: 5px;
-  /* box-shadow: inset 0px 0px 8px #2e5e72; */
-  margin-bottom: 5px;
-  padding: 5px;
+/*** Stars ***/
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  cursor: pointer;
+  list-style-type:none;
+  padding:0;
 }
+
+.rating-stars ul > li.star {
+  display:inline-block;
+  margin: 0px -5px;
+  padding: 0px 5px;
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i {
+  color:#ddd; /* Color on idle state */
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i {
+  color:#2e5e72;
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i {
+  color:#4aa0c2;
+}
+
+
+
 
 /*** Tabs ***/
 #myTab .nav-link {
@@ -234,7 +277,7 @@ footer .developer:hover {
 }
 
 @media only screen and (max-width: 850px) {
-  .btn-action-rate .fa-star {
+  #stars .star i {
     font-size: 1rem;
   }
 

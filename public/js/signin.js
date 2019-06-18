@@ -63,7 +63,7 @@ $("#my-signin2").click(function() {
   auth2.grantOfflineAccess().then(signInCallback);
 });
 function signInCallback(authResult) {
-  if (authResult["code"]) {
+  if (authResult.code) {
     // Hide the sign-in button now that the user is authorized, for example:
     $("#my-signin2").attr("style", "display: none");
 
@@ -81,7 +81,7 @@ function signInCallback(authResult) {
         // Handle or verify the server response.
       },
       processData: false,
-      data: authResult["code"]
+      data: authResult.code
     });
   } else {
     // There was an error.

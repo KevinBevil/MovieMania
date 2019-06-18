@@ -53,24 +53,6 @@
         </div>
       </main>
 
-      <aside>
-        <div class="section-border" id="to-watch-list">
-          <h3>Watch List</h3>
-          <ul vue="movie-watch-list">
-            <li v-for="movie in list">
-              {{ movie.title }}
-              <button class="watch-movie" v-bind:data-id="movie.id">
-                Move to Watched List
-              </button>
-              <button class="delete-movie" v-bind:data-id="movie.id">
-                Delete
-              </button>
-            </li>
-            <!-- <movie-watch-list></movie-watch-list> -->
-          </ul>
-        </div>
-
-
         <aside>
             <div class="section-border" id="to-watch-list">
                 <h3>Watch List</h3>
