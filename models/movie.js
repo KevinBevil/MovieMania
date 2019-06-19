@@ -23,15 +23,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     movieActors: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(200),
       allowNull: false
     },
     movieDirector: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(200),
       allowNull: false
     },
     movieGenre: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(200),
       allowNull: false
     },
     moviePlot: {
@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     movieWriter: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(500),
       allowNull: false
     },
     movieCountry: {
