@@ -64,6 +64,8 @@ module.exports = function(app) {
   app.post("/login", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       console.log(dbUser);
+    }).catch(function(err) {
+      console.log(err);
     });
   });
 };
