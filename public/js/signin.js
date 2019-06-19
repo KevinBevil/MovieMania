@@ -3,13 +3,30 @@ $("#my-signoff2").hide();
 function onSuccess(googleUser) {
   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
   var user = googleUser.getBasicProfile().getName();
-  var id_token = googleUser.getAuthResponse().id_token;
-  var auth = gapi.auth2.getAuthInstance();
-  console.log(user);
-  console.log(id_token);
+  var userEmail = googleUser.getBasicProfile().getEmail();
+  var userPic = googleUser.getBasicProfile().getImageUrl();
+
+  $("footer").before(`<p><div class="user-info" id="user">${user}</div>
+  <div class="user-info" id="email">${userEmail}</div>
+  <div class="user-info" id="pic">${userPic}</div></p>`);
+  $(".user-info").hide();
+
   onSignIn(googleUser);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
+
+  axios
+    .post("/login", {
+      userName: user,
+      email: userEmail,
+      pic: userPic
+    })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 }
 
 function onFailure(error) {
@@ -28,7 +45,6 @@ function renderButton() {
 }
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
   console.log("Name: " + profile.getName());
   console.log("Image URL: " + profile.getImageUrl());
   console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.

@@ -211,3 +211,22 @@ $(document).ready(function() {
   // initialize page by refreshing the watchlist
   refreshWatchList();
 });
+
+// =============================================================================
+// JQuery handlers for User Table in DB
+// =============================================================================
+
+$(document).ready(function() {
+  $("body").change(function() {
+    var $user = $("#user").value();
+    var $email = $("#email").value();
+    var $pic = $("#pic").value();
+
+    var newUser = {
+      userName: $user,
+      email: $email,
+      pic: $pic
+    };
+    console.log("!!!" + newUser);
+  });
+});
