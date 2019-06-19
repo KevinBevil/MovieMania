@@ -62,4 +62,7 @@ Vue.component("genStars", {
       </ul>
     </div>
   `
+
 });
+
+
