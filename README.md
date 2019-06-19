@@ -39,6 +39,7 @@ Here is a screenshot of a working watch list and rated movie:
 - [OMDb API](http://www.omdbapi.com/)
 - Heroku
 - JawsDB
+- OAuth 2.0
 
 ## Contributors
 
