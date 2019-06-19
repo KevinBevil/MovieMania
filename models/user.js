@@ -12,12 +12,20 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     pic: {
       type: DataTypes.STRING(100),
       allowNull: true
     }
   });
+  User.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    User.hasMany(models.Movie, {
+      onDelete: "cascade"
+    });
+  };
   return User;
 };

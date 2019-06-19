@@ -20,6 +20,7 @@ module.exports = function(app) {
       where: {
         watched: watchedBool
       },
+      include: [db.User],
       order: [["updatedAt", "ASC"]]
     }).then(function(movies) {
       res.json(movies);
@@ -32,7 +33,7 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.Movie]
+      include: [db.User] // Changed during teacher time
     }).then(function(dbMovie) {
       res.json(dbMovie);
     });
@@ -42,7 +43,9 @@ module.exports = function(app) {
   app.post("/api/movies", function(req, res) {
     db.Movie.create(req.body).then(function(dbMovie) {
       res.json(dbMovie);
-    });
+    }).catch(function(err) {
+      console.log(err);
+    });;
   });
 
   // Delete a movie by id
@@ -64,6 +67,8 @@ module.exports = function(app) {
   app.post("/login", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       console.log(dbUser);
+    }).catch(function(err) {
+      console.log(err);
     });
   });
 };

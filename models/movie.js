@@ -72,5 +72,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   });
+  Movie.associate = function(models) {
+    // We're saying that a Post should belong to an Author
+    // A Post can't be created without an Author due to the foreign key constraint
+    Movie.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Movie;
 };

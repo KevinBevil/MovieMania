@@ -1,5 +1,7 @@
 $("#my-signoff2").hide();
 
+//When the user successfully signs in through Google, their name/email validation 
+//is entered into the User database
 function onSuccess(googleUser) {
   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
   var user = googleUser.getBasicProfile().getName();
@@ -14,7 +16,7 @@ function onSuccess(googleUser) {
   onSignIn(googleUser);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
-
+// The actual axios API call using the info of currently logged in user
   axios
     .post("/login", {
       userName: user,
