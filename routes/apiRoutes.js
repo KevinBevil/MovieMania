@@ -60,10 +60,20 @@ module.exports = function(app) {
       res.json(dbMovie);
     });
   });
+
+  // User db get method to check if user email is already in database
+  app.get("/check/user", function(req, res) {
+    db.User.findOne({
+      where: req.body
+    }).then(function(response) {
+      res.json(response);
+    });
+  });
+
   // The user db create method
   app.post("/login", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
-      console.log(dbUser);
+      res.json(dbUser);
     });
   });
 };
