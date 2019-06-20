@@ -28,6 +28,12 @@ nav ul li {
   text-align: center;
 }
 
+#user-image {
+  border-radius: 50%;
+  width: 40px;
+  margin-left: 14px;
+}
+
 .signin-nav {
   position: relative;
   top: -10px;
