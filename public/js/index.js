@@ -99,10 +99,7 @@ $(document).ready(function() {
     var movieYear = getDataFromElement(movieDetails, "#movie-year");
     var movieGenre = getDataFromElement(movieDetails, "#genre");
     var moviePlot = getDataFromElement(movieDetails, ".movie-plot");
-    var imdbRating = getDataFromElement(movieDetails, "#imdb-rating").split(
-      " "
-    );
-    imdbRating = imdbRating[imdbRating.length - 1];
+    var imdbRating = getDataFromElement(movieDetails, "#imdb-rating")
     var moviePoster = $(".movie-poster").attr("src");
     var movieRuntime = getDataFromElement(movieDetails, "#run-time");
     var movieRating = getDataFromElement(movieDetails, "#movie-rating");
