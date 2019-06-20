@@ -112,6 +112,7 @@ $(document).ready(function() {
     var movieWriter = getDataFromElement(movieDetails, "#movie-writers");
     var movieCountry = getDataFromElement(movieDetails, "#movie-country");
     var movieLanguage = getDataFromElement(movieDetails, "#movie-language");
+    var userId = $("#user-name").attr("data-id");
 
     var movieWatched = false;
     var userRating = 0;
@@ -138,7 +139,8 @@ $(document).ready(function() {
       movieCountry: movieCountry,
       movieLanguage: movieLanguage,
       watched: movieWatched,
-      userRating: userRating
+      userRating: userRating,
+      UserId: userId
     };
 
     // if (!(example.text && example.description)) {
