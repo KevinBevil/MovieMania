@@ -94,6 +94,7 @@ function signOut() {
   auth2.signOut().then(function() {
     console.log("User signed out.");
     $("#user-name").empty();
+    $("#user-name").attr("data-id", "");
     $("#my-signoff2").hide();
     $("#my-signin2").show();
   });

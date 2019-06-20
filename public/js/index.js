@@ -16,9 +16,9 @@ $(document).ready(function() {
         data: JSON.stringify(newMovie)
       });
     },
-    getMovies: function(watched) {
+    getMovies: function(id) {
       return $.ajax({
-        url: "api/movies/" + watched,
+        url: "api/movies/byuser/" + id,
         type: "GET"
       });
     },
@@ -53,34 +53,33 @@ $(document).ready(function() {
 
   // refreshWatchList gets new examples from the db and repopulates the list
   var refreshWatchList = function() {
-    API.getMovies("false").then(function(movies) {
-      renderList(movies, movieWatchList);
-    });
-
-    API.getMovies("true").then(function(watchedMovies) {
-      renderList(watchedMovies, movieWatchedList);
+    var userId = $("#user-name").attr("data-id");
+    console.log(userId);
+    API.getMovies(userId).then(function(movies) {
+      console.log(movies[0].Movies);
+      renderList(movies[0].Movies);
     });
   };
 
-  var renderList = function(movies, vueElement) {
-    var moviesList = [];
-
+  var renderList = function(movies) {
+    var watchList = [];
+    var watchedList = [];
     for (var i = 0; i < movies.length; i++) {
       if (movies[i].userRating > 0) {
-        moviesList.push({
+        watchedList.push({
           title: movies[i].movieName,
           userRating: movies[i].userRating,
           id: movies[i].id
         });
       } else {
-        moviesList.push({
+        watchList.push({
           title: movies[i].movieName,
           id: movies[i].id
         });
       }
     }
-
-    vueElement.list = moviesList;
+    movieWatchList.list = watchList;
+    movieWatchedList.list = watchedList;
   };
 
   // handleFormSubmit is called whenever we submit a new example
