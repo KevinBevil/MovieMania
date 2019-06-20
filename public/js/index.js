@@ -218,9 +218,9 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $("body").change(function() {
-    var $user = $("#user").value();
-    var $email = $("#email").value();
-    var $pic = $("#pic").value();
+    var $user = $("#user").val();
+    var $email = $("#email").val();
+    var $pic = $("#pic").val();
 
     var newUser = {
       userName: $user,
