@@ -41,11 +41,13 @@ module.exports = function(app) {
 
   // Create a new movie
   app.post("/api/movies", function(req, res) {
-    db.Movie.create(req.body).then(function(dbMovie) {
-      res.json(dbMovie);
-    }).catch(function(err) {
-      console.log(err);
-    });;
+    db.Movie.create(req.body)
+      .then(function(dbMovie) {
+        res.json(dbMovie);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   });
 
   // Delete a movie by id
@@ -63,12 +65,22 @@ module.exports = function(app) {
       res.json(dbMovie);
     });
   });
+
+  // User db get method to check if user email is already in database
+  app.get("/check/user", function(req, res) {
+    db.User.findOne({
+      where: req.body
+    }).then(function(response) {
+      console.log(response);
+      res.json(response);
+    });
+  });
+
   // The user db create method
   app.post("/login", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       console.log(dbUser);
-    }).catch(function(err) {
-      console.log(err);
+      res.json(dbUser);
     });
   });
 };
