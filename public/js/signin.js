@@ -1,6 +1,35 @@
-$("#my-signoff2").hide();
-$("#my-signin2").hide();
+function onLoad() {
+  gapi.load("auth2", function() {
+    gapi.auth2.init().then(function() {
+      gapi.signin2.render("my-signin2", {
+        scope: "profile email",
+        width: 240,
+        height: 50,
+        longtitle: true,
+        theme: "dark",
+        onsuccess: onSuccess,
+        onfailure: onFailure
+      });
+    });
+  });
+}
 
+// $("#my-signin2").hide();
+// $("#my-signoff2").hide();
+
+// // Check if user is logged in
+// if (
+//   !$("#user-name")
+//     .text()
+//     .trim().length
+// ) {
+//   $("#my-signoff2").show();
+// } else {
+//   $("#my-signin2").show();
+// }
+
+//When the user successfully signs in through Google, their name/email validation
+//is entered into the User database
 function onSuccess(googleUser) {
   console.log("Logged in as: " + googleUser.getBasicProfile().getName());
   var user = googleUser.getBasicProfile().getName();
@@ -18,6 +47,8 @@ function onSuccess(googleUser) {
     email: userEmail
   }).then(function(response) {
     if (response) {
+      console.log("user in database\n\n");
+      console.log(response);
       storeData(response);
     } else {
       axios
@@ -27,38 +58,28 @@ function onSuccess(googleUser) {
           pic: userPic
         })
         .then(function(response) {
-          storeData(response);
+          console.log(response);
+          storeData(response.data);
         })
         .catch(function(error) {
           console.log(error);
         });
     }
   });
-
-  $("#my-signin2").hide();
-  $("#my-signoff2").show();
 }
 
-function storeData(response) {
+function storeData(data) {
+  $("#my-signoff2").show();
+  console.log(data.userName);
+
   var userSpan = $("#user-name");
-  userSpan.text(response.data.userName);
-  userSpan.attr("data-id", response.data.id);
+  userSpan.text(data.userName);
+  userSpan.attr("data-id", data.id);
+  $("#my-signin2").hide();
 }
 
 function onFailure(error) {
   console.log(error);
-}
-
-function renderButton() {
-  gapi.signin2.render("my-signin2", {
-    scope: "profile email",
-    width: 240,
-    height: 50,
-    longtitle: true,
-    theme: "dark",
-    onsuccess: onSuccess,
-    onfailure: onFailure
-  });
 }
 
 function onSignIn(googleUser) {
@@ -72,6 +93,7 @@ function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function() {
     console.log("User signed out.");
+    $("#user-name").empty();
     $("#my-signoff2").hide();
     $("#my-signin2").show();
   });
@@ -99,11 +121,14 @@ function signInCallback(authResult) {
       contentType: "application/octet-stream; charset=utf-8",
       success: function(result) {
         // Handle or verify the server response.
+        console.log(result);
+        onSuccess();
       },
       processData: false,
       data: authResult.code
     });
   } else {
     // There was an error.
+    onFailure();
   }
 }
