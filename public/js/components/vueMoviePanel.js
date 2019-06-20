@@ -1,8 +1,8 @@
 $("#to-watch-list > h3").on("click", function() {
 
     $.ajax({
-        url: '/api/movies/false',
-        method: 'GET',
+        url: "/api/movies/false",
+        method: "GET",
         error: function (error) {
             console.log(error);
         }
@@ -10,7 +10,7 @@ $("#to-watch-list > h3").on("click", function() {
         console.log(data);
         var result = "";
 
-        for (var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++) {
             result += `
                 <div class="section-border" id="movie-details">
                     <div class="row">
@@ -22,25 +22,24 @@ $("#to-watch-list > h3").on("click", function() {
                                 <p id="imdb-rating"><strong>IMDB Rating:</strong> ${data[i].IMDBrating}</p>
                             </div>
                             <div class="mt-3 actions">
-                                <div class="btn-action-add"><i class="far fa-plus-square mr-2"></i>Add to List</div>
-                                <section class='rating-widget'>
+                                <section class="rating-widget">
                                     <!-- Rating Stars Box -->
-                                    <div class='rating-stars'>
-                                    <ul class='stars'>
-                                        <li class='star' title='Poor' data-value='1'>
-                                        <i class='fas fa-star'></i>
+                                    <div class="rating-stars">
+                                    <ul class="stars">
+                                        <li class="star" title="Poor" data-value="1">
+                                        <i class="fas fa-star"></i>
                                         </li>
-                                        <li class='star' title='Fair' data-value='2'>
-                                        <i class='fas fa-star'></i>
+                                        <li class="star" title="Fair" data-value="2">
+                                        <i class="fas fa-star"></i>
                                         </li>
-                                        <li class='star' title='Good' data-value='3'>
-                                        <i class='fas fa-star'></i>
+                                        <li class="star" title="Good" data-value="3">
+                                        <i class="fas fa-star"></i>
                                         </li>
-                                        <li class='star' title='Excellent' data-value='4'>
-                                        <i class='fas fa-star'></i>
+                                        <li class="star" title="Excellent" data-value="4">
+                                        <i class="fas fa-star"></i>
                                         </li>
-                                        <li class='star' title='WOW!!!' data-value='5'>
-                                        <i class='fas fa-star'></i>
+                                        <li class="star" title="WOW!!!" data-value="5">
+                                        <i class="fas fa-star"></i>
                                         </li>
                                     </ul>
                                     </div>
@@ -108,7 +107,6 @@ $("#to-watch-list > h3").on("click", function() {
                     </div>
                 </div>
             `
-            console.log(result);
         }
         // clear display area
         $("#search-result").html("");
@@ -124,36 +122,22 @@ $("#to-watch-list > h3").on("click", function() {
 
     // // Display watch list
     // $("#search-result").append(`
-    //     <div vue="movie-results"></div>
+    //     <div vue="movie-watch-results">
+    //         <movie-component v-for="movie in movies" :movies="movies"></movie-component>
+    //     </div>
     // `);
 
 });
 
 
-new Vue({
-    el: "#movie-watch-results",
-    data: function() {
-        return {
-            movies: []
-        }
-    },
-    mounted: function () {
-        var self = this;
-        $.ajax({
-            url: '/api/movies/true',
-            method: 'GET',
-            success: function (data) {
-                self.movies = data;
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
+Vue.component("movie-component", {
+    props: {
+        movies: Object
     },
     template: `
     <div>
         <h3>Your Watch List</h3>
-        <div v-for="movie in movies" class="section-border">
+        <div class="section-border">
             <div class="row">
                 <div class="movie-details-side">
                     <img class="mb-3 movie-poster" :src="movie.moviePoster" alt="">
@@ -163,10 +147,10 @@ new Vue({
                         <p class="imdb-rating"><strong>IMDB Rating:</strong> {{ movie.IMDBrating }}</p>
                     </div>
                     <div class="mt-3 actions">
-                        <section class='rating-widget'>
+                        <section class="rating-widget">
 
                             <!-- Rating Stars Box -->
-                            <div class='rating-stars'>
+                            <div class="rating-stars">
                                 <genStars :userRating="movie.userRating"></genStars>
                             </div>
 
@@ -233,3 +217,25 @@ new Vue({
     `
 });
 
+
+new Vue({
+    el: "#movie-watch-results",
+    data: function() {
+        return {
+            movies: []
+        }
+    },
+    mounted: function () {
+        var self = this;
+        $.ajax({
+            url: "/api/movies/false",
+            method: "GET",
+            success: function (data) {
+                self.movies = data;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+});
