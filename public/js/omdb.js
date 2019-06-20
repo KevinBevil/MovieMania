@@ -22,8 +22,8 @@ $("#btn-search-movie").on("click", function (event) {
             method: "GET"
         }).then(function (res) {
 
+            // clear display area
             $("#input-search").val("");
-            console.log(res);
 
             // check if movie exists in omdb
             if (res.Response !== "False") {
