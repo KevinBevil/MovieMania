@@ -10,6 +10,7 @@ var header = new Vue({
                 <div class="text-right signin-nav">
                     <div id="my-signoff2">
                         Logged in as <span id="user-name"></span>
+                        <img id="user-image">
                         <br>
                         <a href="#" onclick="signOut();">Sign out</a>                        
                     </div>

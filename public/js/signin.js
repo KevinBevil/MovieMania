@@ -73,6 +73,7 @@ function storeData(data) {
   console.log(data.userName);
 
   var userSpan = $("#user-name");
+  $("#user-image").attr("src", data.pic);
   userSpan.text(data.userName);
   userSpan.attr("data-id", data.id);
   $("#my-signin2").hide();
