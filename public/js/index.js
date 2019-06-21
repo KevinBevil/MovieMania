@@ -41,6 +41,11 @@ $(document).ready(function() {
     el: "[vue='movie-watch-list']",
     data: {
       list: []
+    },
+    methods: {
+      fetchData: function() {
+        return this.list;
+      }
     }
   });
 
