@@ -51,6 +51,14 @@ $(document).ready(function() {
     }
   });
 
+  $(document).on("click", "#sign-out", function(event) {
+    event.preventDefault();
+    movieWatchList.list = [];
+    movieWatchedList.list = [];
+  });
+
+  $(document).on("load", refreshWatchList);
+
   // refreshWatchList gets new examples from the db and repopulates the list
   var refreshWatchList = function() {
     var userId = $("#user-name").attr("data-id");
@@ -208,9 +216,6 @@ $(document).ready(function() {
   $searchResult.on("click", ".btn-action-add", addToWatchList);
 
   $watchedList.on("click", ".star", rateMovie);
-
-  // initialize page by refreshing the watchlist
-  refreshWatchList();
 });
 
 // =============================================================================

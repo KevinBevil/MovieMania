@@ -1,6 +1,7 @@
 function onLoad() {
   gapi.load("auth2", function() {
     gapi.auth2.init().then(function() {
+      signOut();
       gapi.signin2.render("my-signin2", {
         scope: "profile email",
         width: 240,
@@ -69,7 +70,11 @@ function onSuccess(googleUser) {
 }
 
 function storeData(data) {
-  $("#my-signoff2").show();
+  $("#my-signoff2").append("Logged in as <span id='user-name'></span>");
+  $("#my-signoff2").append("<img id='user-image'>");
+  $("#my-signoff2").append(
+    "<a class='mb-2 d-block' href='#' id='sign-out'>Sign out</a>"
+  );
   console.log(data.userName);
 
   var userSpan = $("#user-name");
@@ -96,41 +101,47 @@ function signOut() {
     console.log("User signed out.");
     $("#user-name").empty();
     $("#user-name").attr("data-id", "");
-    $("#my-signoff2").hide();
+    $("#my-signoff2").empty();
     $("#my-signin2").show();
   });
 }
 
-$("#my-signin2").click(function() {
-  // signInCallback defined in step 6.
-  auth2.grantOfflineAccess().then(signInCallback);
-});
+$(document).on("click", "#sign-out", signOut);
 
-function signInCallback(authResult) {
-  if (authResult.code) {
-    // Hide the sign-in button now that the user is authorized, for example:
-    $("#my-signin2").attr("style", "display: none");
+// $("#my-signin2").click(function() {
+//   // signInCallback defined in step 6.
+//   auth2.grantOfflineAccess().then(signInCallback);
+// });
 
-    // Send the code to the server
-    $.ajax({
-      type: "POST",
-      url: "http://example.com/storeauthcode",
-      // Always include an `X-Requested-With` header in every AJAX request,
-      // to protect against CSRF attacks.
-      headers: {
-        "X-Requested-With": "XMLHttpRequest"
-      },
-      contentType: "application/octet-stream; charset=utf-8",
-      success: function(result) {
-        // Handle or verify the server response.
-        console.log(result);
-        onSuccess();
-      },
-      processData: false,
-      data: authResult.code
-    });
-  } else {
-    // There was an error.
-    onFailure();
-  }
-}
+// function signInCallback(authResult) {
+//   console.log("stuff here\n\n\n\n");
+//   console.log(authResult);
+//   if (authResult.code) {
+//     // Hide the sign-in button now that the user is authorized, for example:
+//     $("#my-signin2").attr("style", "display: none");
+//     console.log("stuff here\n\n\n\n");
+//     console.log(authResult.code);
+//     // Send the code to the server
+//     $.ajax({
+//       type: "POST",
+//       url: "http://example.com/storeauthcode",
+//       // Always include an `X-Requested-With` header in every AJAX request,
+//       // to protect against CSRF attacks.
+//       headers: {
+//         "X-Requested-With": "XMLHttpRequest"
+//       },
+//       contentType: "application/octet-stream; charset=utf-8",
+//       success: function(result) {
+//         // Handle or verify the server response.
+//         console.log(result);
+//         console.log("something happened");
+//         onSuccess();
+//       },
+//       processData: false,
+//       data: authResult.code
+//     });
+//   } else {
+//     // There was an error.
+//     onFailure();
+//   }
+// }
