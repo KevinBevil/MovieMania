@@ -10,6 +10,7 @@ function onLoad() {
         onsuccess: onSuccess,
         onfailure: onFailure
       });
+      $("#my-signoff2").hide();
     });
   });
 }

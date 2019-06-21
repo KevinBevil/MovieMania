@@ -53,9 +53,9 @@ $("#btn-search-movie").on("click", function (event) {
                         <div class="movie-details-side">
                             <img class="mb-3 movie-poster" src="${res.Poster}" alt="">
                             <div>
-                                <p id="run-time"><strong>Runtime:</strong> ${res.Runtime}</p>
-                                <p id="movie-rating"><strong>Rated:</strong> ${res.Rated}</p>
-                                <p id="imdb-rating"><strong>IMDB Rating:</strong> ${res.imdbRating}</p>
+                                <p><strong>Runtime:</strong> <span id="run-time">${res.Runtime}</span></p>
+                                <p><strong>Rated:</strong> <span id="movie-rating">${res.Rated}</span></p>
+                                <p><strong>IMDB Rating:</strong> <span id="imdb-rating">${res.imdbRating}</span></p>
                             </div>
                             <div class="mt-3 actions">
                                 <div class="btn-action-add"><i class="far fa-plus-square mr-2"></i>Add to List</div>
@@ -93,7 +93,7 @@ $("#btn-search-movie").on("click", function (event) {
                                     </h2>
                                 </div>
                                 <div class="movie-details-body">
-                                    <p id="movie-director">Directed by ${res.Director}</p>
+                                    <p>Directed by <span id="movie-director">${res.Director}</span></p>
                                     <p class="movie-plot">${res.Plot}</p>
                     
                                     <!-- Tabs -->

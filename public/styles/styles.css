@@ -34,20 +34,14 @@ nav ul li {
   margin-left: 14px;
 }
 
-.signin-nav {
-  position: relative;
-  top: -10px;
-}
-
-#my-signin2 {
-  position: absolute;
-  right: 0;
-}
-
 #my-signoff2 {
   max-width: 240px;
   font-weight: bold;
   color: #4aa0c2;
+}
+
+#my-signoff2 > a {
+  display: block;
 }
 
 .signin-nav .abcRioButtonBlue {
