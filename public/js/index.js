@@ -57,7 +57,10 @@ $(document).ready(function() {
     movieWatchedList.list = [];
   });
 
-  $(document).on("load", refreshWatchList);
+  $(document).on("click", "#to-watch-list", function(event) {
+    event.preventDefault();
+    refreshWatchList();
+  });
 
   // refreshWatchList gets new examples from the db and repopulates the list
   var refreshWatchList = function() {
