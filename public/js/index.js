@@ -57,7 +57,7 @@ $(document).ready(function() {
     movieWatchedList.list = [];
   });
 
-  $(document).on("click", "#to-watch-list", function(event) {
+  $(document).on("click", ".load-movies", function(event) {
     event.preventDefault();
     refreshWatchList();
   });
@@ -233,6 +233,6 @@ $(document).ready(function() {
       email: $email,
       pic: $pic
     };
-    console.log("!!!" + newUser);
+    console.log(newUser);
   });
 });

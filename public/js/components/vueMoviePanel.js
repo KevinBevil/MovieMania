@@ -1,7 +1,7 @@
 $("#to-watch-list > h3").on("click", function() {
-
+    var userId = $("user-name").attr("data-id");
     $.ajax({
-        url: "/api/movies/false",
+        url: "/api/movies/byuser/" + userId,
         method: "GET",
         error: function (error) {
             console.log(error);

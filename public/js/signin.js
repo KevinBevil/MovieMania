@@ -83,6 +83,8 @@ function storeData(data) {
   userSpan.attr("data-id", data.id);
   $("#my-signin2").hide();
   $("#my-signoff2").show();
+
+  $(".load-movies").click();
 }
 
 function onFailure(error) {
