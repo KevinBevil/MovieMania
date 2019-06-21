@@ -28,6 +28,12 @@ nav ul li {
   text-align: center;
 }
 
+#user-image {
+  border-radius: 50%;
+  width: 40px;
+  margin-left: 14px;
+}
+
 .signin-nav {
   position: relative;
   top: -10px;
@@ -39,10 +45,9 @@ nav ul li {
 }
 
 #my-signoff2 {
-  width: 240px;
-  height: 50px;
+  max-width: 240px;
   font-weight: bold;
-  color: #4285f4;
+  color: #4aa0c2;
 }
 
 .signin-nav .abcRioButtonBlue {
@@ -62,6 +67,15 @@ nav ul li {
 nav ul li:last-child {
   margin-right: 0;
   padding-right: 0;
+}
+
+.pointer,
+.action-icon {
+  cursor: pointer;
+}
+.pointer:hover,
+.action-icon:hover {
+  text-shadow: #2e5e72 0px 0px 5px;
 }
 
 a:hover {
@@ -230,22 +244,22 @@ ul {
 
 
 /*** Tabs ***/
-#myTab .nav-link {
+.nav-link {
   color: #2e5e72;
   padding: 3px 20px;
 }
-#myTab .nav-link.active {
+.nav-link.active {
   color: #062f42;
   font-weight: 800;
 }
 
-#details td.details-label {
+td.details-label {
   font-weight: 800;
   padding-right: 15px;
   text-align: right;
 }
 
-#details td.details-body {
+td.details-body {
   border-left: #062f42 solid 2px;
   border-top: 15px solid #fff;
   font-size: 1rem;
