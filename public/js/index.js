@@ -76,7 +76,7 @@ $(document).ready(function() {
     var watchList = [];
     var watchedList = [];
     for (var i = 0; i < movies.length; i++) {
-      if (movies[i].userRating > 0) {
+      if (movies[i].watched) {
         watchedList.push({
           title: movies[i].movieName,
           userRating: movies[i].userRating,

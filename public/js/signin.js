@@ -83,6 +83,7 @@ function storeData(data) {
   userSpan.text(data.userName);
   userSpan.attr("data-id", data.id);
   $("#my-signin2").hide();
+  $("#my-signoff2").show();
 }
 
 function onFailure(error) {
