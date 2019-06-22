@@ -1,21 +1,106 @@
 $("#to-watch-list > h3").on("click", function() {
     listDisplay($("#to-watch-list"));
+    
+    // Display result
+    $("#search-result").prepend(`
+        <h3>Your Watch List</h3>
+    `);
 });
 
 $("#recently-rated > h3").on("click", function() {
     listDisplay($("#recently-rated"));
+
+    // Display result
+    $("#search-result").prepend(`
+        <h3>Watched & Rated</h3>
+    `);
 });
 
 var listDisplay = function (element) {
     var vueElement = element.find("ul");
-
-    console.log(vueElement[0]["__vue__"].list);
-
+    var generatedStars = "";
     var result = "";
-
     var data = vueElement[0]["__vue__"].list;
 
     for (var i = 0; i < data.length; i++) {
+
+        var userRating = data[i].userRating;
+
+      switch (userRating) {
+        case "0":
+            break;
+        case "1":
+            generatedStars = `
+                <li class="star selected" title="Poor" data-value="1">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="Fair" data-value="2">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="Good" data-value="3">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="Excellent" data-value="4">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="WOW!!!" data-value="5">
+                    <i class="fas fa-star"></i></li>
+            `;
+            break;
+        case "2":
+            generatedStars = `
+                <li class="star selected" title="Poor" data-value="1">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Fair" data-value="2">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="Good" data-value="3">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="Excellent" data-value="4">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="WOW!!!" data-value="5">
+                    <i class="fas fa-star"></i></li>
+            `;
+            break;
+        case "3":
+            generatedStars = `
+                <li class="star selected" title="Poor" data-value="1">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Fair" data-value="2">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Good" data-value="3">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="Excellent" data-value="4">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="WOW!!!" data-value="5">
+                    <i class="fas fa-star"></i></li>
+            `;
+            break;
+        case "4":
+            generatedStars = `
+                <li class="star selected" title="Poor" data-value="1">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Fair" data-value="2">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Good" data-value="3">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Excellent" data-value="4">
+                    <i class="fas fa-star"></i></li>
+                <li class="star" title="WOW!!!" data-value="5">
+                    <i class="fas fa-star"></i></li>
+            `;
+            break;
+        case "5":
+            generatedStars = `
+                <li class="star selected" title="Poor" data-value="1">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Fair" data-value="2">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Good" data-value="3">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="Excellent" data-value="4">
+                    <i class="fas fa-star"></i></li>
+                <li class="star selected" title="WOW!!!" data-value="5">
+                    <i class="fas fa-star"></i></li>
+            `;
+            break;
+        }
+
         result += `
             <div class="section-border" id="movie-details">
                 <div class="row">
@@ -27,29 +112,15 @@ var listDisplay = function (element) {
                             <p id="imdb-rating"><strong>IMDB Rating:</strong> ${data[i].IMDBrating}</p>
                         </div>
                         <div class="mt-3 actions">
-                            <section class="rating-widget">
-                                <!-- Rating Stars Box -->
-                                <div class="rating-stars">
+                          <section class="rating-widget">
+                              <!-- Rating Stars Box -->
+                              <div class="rating-stars">
                                 <ul class="stars">
-                                    <li class="star" title="Poor" data-value="1">
-                                    <i class="fas fa-star"></i>
-                                    </li>
-                                    <li class="star" title="Fair" data-value="2">
-                                       <i class="fas fa-star"></i>
-                                    </li>
-                                    <li class="star" title="Good" data-value="3">
-                                        <i class="fas fa-star"></i>
-                                    </li>
-                                    <li class="star" title="Excellent" data-value="4">
-                                        <i class="fas fa-star"></i>
-                                    </li>
-                                    <li class="star" title="WOW!!!" data-value="5">
-                                        <i class="fas fa-star"></i>
-                                    </li>
+                                  ${generatedStars}
                                 </ul>
-                                </div>
-                            </section>
-                        </div>
+                              </div>
+                          </section>
+                      </div>
                     </div>
                     <div class="movie-details-main">
                             <div class="row px-3">
@@ -118,7 +189,6 @@ var listDisplay = function (element) {
 
     // Display result
     $("#search-result").append(`
-        <h3>Your Watch List</h3>
         ${result}
     `);
     
