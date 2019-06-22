@@ -44,9 +44,7 @@ function onSuccess(googleUser) {
 
   onSignIn(googleUser);
 
-  $.get("/check/user", {
-    email: userEmail
-  }).then(function(response) {
+  $.get("/check/user/" + userEmail).then(function(response) {
     if (response) {
       console.log("user in database\n\n");
       console.log(response);

@@ -62,9 +62,11 @@ module.exports = function(app) {
   });
 
   // User db get method to check if user email is already in database
-  app.get("/check/user", function(req, res) {
+  app.get("/check/user/:email", function(req, res) {
     db.User.findOne({
-      where: req.body
+      where: {
+        email: req.params.email
+      }
     }).then(function(response) {
       console.log(response);
       res.json(response);
