@@ -1,7 +1,13 @@
-$("#to-watch-list > h3").on("click", function () {
-    var userId = $("user-name").attr("data-id");
+$("#to-watch-list > h3").on("click", function() {
+    listDisplay($("#to-watch-list"));
+});
 
-    var vueElement = $("#to-watch-list").find("ul");
+$("#recently-rated > h3").on("click", function() {
+    listDisplay($("#recently-rated"));
+});
+
+var listDisplay = function (element) {
+    var vueElement = element.find("ul");
 
     console.log(vueElement[0]["__vue__"].list);
 
@@ -123,8 +129,7 @@ $("#to-watch-list > h3").on("click", function () {
     //     </div>
     // `);
 
-});
-
+}
 
 Vue.component("movie-component", {
     props: {
