@@ -46,13 +46,14 @@
         <aside>
             <div class="section-border" id="to-watch-list">
                 <h3 class="d-inline pointer">Watch List</h3>
+                <span class="load-movies"></span>
                 <ul vue="movie-watch-list">
                     <li class="list-item-border" v-for="movie in list">
                         <span title="Delete this movie" class="delete-movie action-icon" v-bind:data-id="movie.id"><i
                                 class="fas fa-times"></i></span>
                         <span title="Watch this movie" class="watch-movie action-icon" v-bind:data-id="movie.id"><i
                                 class="far fa-check-square"></i></span>
-                        {{ movie.title }}
+                        {{ movie.movieName }}
                     </li>
                 </ul>
             </div>
@@ -65,7 +66,7 @@
                                 class="fas fa-times"></i></span>
                         <span title="Move back to Watch List" class="unwatch-movie action-icon"
                             v-bind:data-id="movie.id"><i class="far fa-eye-slash"></i></span>
-                        {{ movie.title }}
+                        {{ movie.movieName }}
                         <section class="rating-widget">
                             <!-- Rating Stars Box -->
                             <div class="rating-stars">

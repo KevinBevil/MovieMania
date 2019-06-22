@@ -57,7 +57,7 @@ $(document).ready(function() {
     movieWatchedList.list = [];
   });
 
-  $(document).on("click", "#to-watch-list", function(event) {
+  $(document).on("click", ".load-movies", function(event) {
     event.preventDefault();
     refreshWatchList();
   });
@@ -77,16 +77,9 @@ $(document).ready(function() {
     var watchedList = [];
     for (var i = 0; i < movies.length; i++) {
       if (movies[i].watched) {
-        watchedList.push({
-          title: movies[i].movieName,
-          userRating: movies[i].userRating,
-          id: movies[i].id
-        });
+        watchedList.push(movies[i]);
       } else {
-        watchList.push({
-          title: movies[i].movieName,
-          id: movies[i].id
-        });
+        watchList.push(movies[i]);
       }
     }
     movieWatchList.list = watchList;
@@ -233,6 +226,6 @@ $(document).ready(function() {
       email: $email,
       pic: $pic
     };
-    console.log("!!!" + newUser);
+    console.log(newUser);
   });
 });
